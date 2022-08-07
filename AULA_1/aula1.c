@@ -13,8 +13,8 @@
 
 int main() {
     //Variáveis
-    char nomeArquivo[20], letraDigitada, letraTeste, aux[2];
-    int contador_linhas=1, contador=0, teste;
+    char nomeArquivo[20], letraDigitada, letraTeste;
+    int contador_linhas=1, contador=0;
 
     printf("Por favor, digite o nome do arquivo de texto: ");
     scanf("%s", &nomeArquivo);
