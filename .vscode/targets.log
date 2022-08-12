@@ -1,0 +1,288 @@
+make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.82.90
+# Built for i686-pc-mingw32
+# Copyright (C) 1988-2012 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Thu Aug 11 19:22:18 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(patsubst %\,%,$(dir $<)))
+# automatic
+?F = $(notdir $?)
+# default
+.SHELLFLAGS := -c
+# makefile
+MAKEFLAGS = Rrqp
+# automatic
+?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# automatic
+@D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
+# environment
+HOMEDRIVE = C:
+# automatic
+@F = $(notdir $@)
+# automatic
+^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
+# makefile
+CURDIR := c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados
+# default
+SHELL := C:/MinGW/msys/1.0/bin/sh.exe
+# environment
+WINDIR = C:\WINDOWS
+# environment
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"89ebf7d0bb12d1282a52b02d65044dbc.pt-br","_translationsConfigFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\tcf.json","_cacheRoot":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br","_resolvedLanguagePackCoreLocation":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\6d9b74a70ca9c7733b29f0456fd8195364076dda","_corruptedFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\corrupted.info","_languagePackSupport":true}
+# environment
+ONEDRIVE = C:\Users\carol\OneDrive
+# environment
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+# makefile
+MAKEFILE_LIST := 
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
+# environment
+TMP = C:\Users\carol\AppData\Local\Temp
+# environment
+PROGRAMW6432 = C:\Program Files
+# environment
+PROGRAMDATA = C:\ProgramData
+# environment
+VSCODE_CWD = C:\Users\carol\AppData\Local\Programs\Microsoft VS Code
+# environment
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin;C:\Program Files\ImageMagick-7.1.0-Q16-HDRI;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\MinGW\bin;C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\GnuWin32\bin;C:\Users\carol\AppData\Local\Microsoft\WindowsApps;C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\Users\carol\AppData\Local\GitHubDesktop\bin;C:\GnuWin32\bin;C:\MinGW\msys\1.0\bin;C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;C:\msys64\GnuWin32\bin;C:\Program Files\Java\jdk1.8.0_321\bin;C:\Program Files\Java\jre1.8.0_321\bin;C:\ffmpeg\bin;C:\Program Files (x86)\Dr. Memory\bin\
+# environment
+COMMONPROGRAMW6432 = C:\Program Files\Common Files
+# environment
+ZES_ENABLE_SYSMAN = 1
+# environment
+PROCESSOR_ARCHITECTURE = x86
+# environment
+USERPROFILE = C:\Users\carol
+# environment
+ALLUSERSPROFILE = C:\ProgramData
+# environment
+SOPC_KIT_NIOS2 = C:\altera\13.0sp1\nios2eds
+# environment
+NUMBER_OF_PROCESSORS = 8
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver
+# automatic
+%F = $(notdir $%)
+# environment
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12892_ZVTPIPHEXZEYQOKE
+# environment
+COMPUTERNAME = LAPTOP-CI2F1HBH
+# environment
+PROGRAMFILES = C:\Program Files (x86)
+# environment
+DRIVERDATA = C:\Windows\System32\Drivers\DriverData
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+USERNAME = carol
+# environment
+PUBLIC = C:\Users\Public
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\carol\AppData\Roaming\Code\CachedData\6d9b74a70ca9c7733b29f0456fd8195364076dda
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
+# environment
+LOGONSERVER = \\LAPTOP-CI2F1HBH
+# environment
+ONEDRIVECONSUMER = C:\Users\carol\OneDrive
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+USERDOMAIN = LAPTOP-CI2F1HBH
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# default
+MAKE_VERSION := 3.82.90
+# makefile
+.DEFAULT_GOAL := 
+# environment
+PROGRAMFILES(X86) = C:\Program Files (x86)
+# automatic
+%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
+# environment
+LOCALAPPDATA = C:\Users\carol\AppData\Local
+# environment
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+# default
+MAKE_COMMAND := make.exe
+# environment
+PROCESSOR_ARCHITEW6432 = AMD64
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
+# environment
+OS = Windows_NT
+# environment
+VSCODE_IPC_HOOK = \\.\pipe\768bcbecc7a473568612ec48de6c3f2c-1.70.1-main-sock
+# environment
+HOMEPATH = \Users\carol
+# environment
+COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
+# environment
+PROMPT = $P$G
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+# environment
+SYSTEMROOT = C:\WINDOWS
+# automatic
++D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
+# automatic
++F = $(notdir $+)
+# environment
+APPDATA = C:\Users\carol\AppData\Roaming
+# environment
+TEMP = C:\Users\carol\AppData\Local\Temp
+# environment
+COMSPEC = C:\WINDOWS\system32\cmd.exe
+# default
+MAKEFILES := 
+# environment
+QUARTUS_ROOTDIR = C:\altera\13.0sp1\quartus
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+SYSTEMDRIVE = C:
+# environment
+SESSIONNAME = Console
+# environment
+PROCESSOR_REVISION = 8c01
+# default
+.INCLUDE_DIRS = C:/MinGW/include
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+PROCESSOR_LEVEL = 6
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+# environment
+VSCODE_PID = 12892
+# environment
+USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
+# variable set hash-table stats:
+# Load=90/1024=9%, Rehash=0, Collisions=11/105=10%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# C:\Users\carol\AppData\Local\Microsoft\WindowsApps (key C:/Users/carol/AppData/Local/Microsoft/WindowsApps, mtime 1659746205): 35 files, no impossibilities.
+# C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin (key C:/Program Files/Eclipse Adoptium/jdk-17.0.2.8-hotspot/bin, mtime 1644935130): 122 files, no impossibilities.
+# C:\Users\carol\AppData\Local\GitHubDesktop\bin (key C:/Users/carol/AppData/Local/GitHubDesktop/bin, mtime 1641824609): 4 files, no impossibilities.
+# C:\WINDOWS\System32\WindowsPowerShell\v1.0\ (key C:/WINDOWS/System32/WindowsPowerShell/v1.0/, mtime 1634313266): 31 files, no impossibilities.
+# . (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados, mtime 1659895616): 7 files, no impossibilities.
+# C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/carol/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1660167226): 4 files, no impossibilities.
+# C:\Program Files (x86)\Common Files\Oracle\Java\javapath (key C:/Program Files (x86)/Common Files/Oracle/Java/javapath, mtime 1644949653): 5 files, no impossibilities.
+# C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1641508032): 8 files, no impossibilities.
+# C:\WINDOWS\System32\OpenSSH\: could not be stat'd.
+# C:\GnuWin32\bin (key C:/GnuWin32/bin, mtime 1642530982): 7 files, no impossibilities.
+# C:\MinGW\bin (key C:/MinGW/bin, mtime 1643207478): 84 files, no impossibilities.
+# C:\WINDOWS (key C:/WINDOWS, mtime 1659471277): 120 files, no impossibilities.
+# C:\Program Files\ImageMagick-7.1.0-Q16-HDRI (key C:/Program Files/ImageMagick-7.1.0-Q16-HDRI, mtime 1641996487): 75 files, no impossibilities.
+# C:\MinGW\msys\1.0\bin (key C:/MinGW/msys/1.0/bin, mtime 1643379551): 160 files, no impossibilities so far.
+# C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1652267126): 155 files, no impossibilities.
+# C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659472163): 6 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660180483): 2810 files, no impossibilities.
+
+# 3633 files, no impossibilities in 17 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# files hash-table stats:
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 7 (6) / strings = 3586 / storage = 53736 B / avg = 14 B
+# current buf: size = 8174 B / used = 4744 B / count = 356 / avg = 13 B
+# other used: total = 45562 B / count = 3230 / avg = 14 B
+# other free: total = 52 B / max = 14 B / min = 2 B / avg = 8 B
+
+# strcache performance: lookups = 3658 / hit rate = 1%
+# hash-table stats:
+# Load=3586/8192=44%, Rehash=0, Collisions=1314/3658=36%
+# Finished Make data base on Thu Aug 11 19:22:18 2022
+
+ 
+make.exe: *** No rule to make target 'all'.  Stop.
+
