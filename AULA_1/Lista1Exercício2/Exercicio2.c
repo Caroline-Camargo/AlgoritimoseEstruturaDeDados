@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 
 /*
     Faça um programa que armazena nomes.
@@ -15,40 +15,30 @@ int menu();
 
 int main() {
     int op=1;
-    char *nomes, *nomeAdicionar, letra, temp[2];
+    char *nomes, nomeAdicionar[20], letra, i=0, j=0;
+    nomes = (char*)malloc(sizeof(char));
+
     while (op != 4) {
         op = Menu();
         switch (op) {
             case 1:
+                //AdicionarNome(&i, &nomes);
+                j=0;
                 printf("Digite o nome que deseja adicionar: \n");
                 fflush(stdin);
-                scanf("%c", &letra);
+                scanf("%s", &nomeAdicionar);
                 
-                nomes = (char*)malloc(sizeof(letra));
+                nomes = (char*)realloc(nomes, sizeof(nomeAdicionar) * sizeof(char) + 1);
                 if (!nomes){
                     printf("Erro na alocacao de memoria");
                     exit (1);
                 }
-            
-                *nomes = letra;
-                printf("\n%c", *nomes);
-                
-                printf("\n --- %c", letra);
-                
-                while (letra != '\n') {
-                    temp[1] = letra;
-                    nomes = (char*)realloc(nomes,sizeof(letra));
-                    scanf("%c", &letra);
-                    *nomes = letra;
-                    printf("\n --- %c", letra);
-                    printf("\n%c", *nomes);
+
+                for (i; i<=(strlen(nomes)); i++) {
+                    nomes[i] = nomeAdicionar[j];
+                    j++;
                 }
-                
-                //nomeAdicionar = malloc(31);
-                //scanf("%s", nomeAdicionar);
-                //printf("\n%s", nomeAdicionar);
-                //free(nomeAdicionar);
-                //AdicionarNome(&nomes, &nomeAdicionar);
+                i--;            
             break;
 
             case 2:
@@ -56,7 +46,7 @@ int main() {
             break;
 
             case 3:
-            /* code */
+                printf("\nVariavel  %s \n", nomes);
             break;
 
             case 4:
@@ -82,8 +72,24 @@ int Menu() {
     return opMenu;
 }
 
-void AdicionarNome(char *nome, char *nomeAdd) {
-    printf ("%s e %s", *nome, *nomeAdd);
-    printf("entrou");
+void AdicionarNome(int *i, char *nomes) {
+    int j=0;
+    char nomeAdicionar[20];
+
+    printf("Digite o nome que deseja adicionar: \n");
+    fflush(stdin);
+    scanf("%s", &nomeAdicionar);
+                
+    nomes = (char*)realloc(nomes, sizeof(nomeAdicionar) * sizeof(char) + 1);
+    if (!nomes){
+        printf("Erro na alocacao de memoria");
+        exit (1);
+    }
+
+    for (*i; *i<=(strlen(nomes)); *i++) {
+        nomes[*i] = nomeAdicionar[j];
+        j++;
+    }
+    *i--;      
 } 
 

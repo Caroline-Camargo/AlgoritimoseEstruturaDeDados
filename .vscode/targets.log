@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Thu Aug 11 19:22:18 2022
+# Make data base, printed on Mon Aug 15 18:26:31 2022
 
 # Variables
 
@@ -16,36 +17,47 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 ?F = $(notdir $?)
 # default
 .SHELLFLAGS := -c
+# makefile (from 'Makefile', line 21)
+SRC := src
 # makefile
 MAKEFLAGS = Rrqp
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
+# makefile (from 'Makefile', line 48)
+INCLUDES := -Iinclude
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
 HOMEDRIVE = C:
 # automatic
 @F = $(notdir $@)
-# automatic
+# auto 
+matic
 ^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
 # makefile
 CURDIR := c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados
 # default
 SHELL := C:/MinGW/msys/1.0/bin/sh.exe
+# makefile (from 'Makefile', line 35)
+RM := del /q /f
 # environment
 WINDIR = C:\WINDOWS
 # environment
 VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"89ebf7d0bb12d1282a52b02d65044dbc.pt-br","_translationsConfigFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\tcf.json","_cacheRoot":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br","_resolvedLanguagePackCoreLocation":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\6d9b74a70ca9c7733b29f0456fd8195364076dda","_corruptedFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\corrupted.info","_languagePackSupport":true}
+# makefile (from 'Makefile', line 10)
+CFLAGS := -Wall -Wextra -g
 # environment
 ONEDRIVE = C:\Users\carol\OneDrive
 # environment
 PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
-# makefile
-MAKEFILE_LIST := 
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 TMP = C:\Users\carol\AppData\Local\Temp
+# makefile (from 'Makefile', line 54)
+SOURCES := src/main.c
 # environment
 PROGRAMW6432 = C:\Program Files
 # environment
@@ -58,28 +70,36 @@ PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # environment
 ZES_ENABLE_SYSMAN = 1
+# makefile (from 'Makefile', line 36)
+MD := mkdir
 # environment
 PROCESSOR_ARCHITECTURE = x86
 # environment
 USERPROFILE = C:\Users\carol
 # environment
 ALLUSERSPROFILE = C:\ProgramData
+# makefile (from 'Makefile', line 33)
+LIBDIRS := lib
 # environment
 SOPC_KIT_NIOS2 = C:\altera\13.0sp1\nios2eds
 # environment
 NUMBER_OF_PROCESSORS = 8
 # environment
 ELECTRON_RUN_AS_NODE = 1
+# makefile (from 'Makefile', line 27)
+LIB := lib
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12892_ZVTPIPHEXZEYQOKE
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16480_ZTKEULPCPVHZQIIZ
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
 PROGRAMFILES = C:\Program Files (x86)
+# makefile (from 'Makefile', line 65)
+OUTPUTMAIN := output\main.exe
 # environment
 DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
@@ -98,6 +118,8 @@ APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
 # environment
 LOGONSERVER = \\LAPTOP-CI2F1HBH
+# makefile (from 'Makefile', line 32)
+INCLUDEDIRS := include
 # environment
 ONEDRIVECONSUMER = C:\Users\carol\OneDrive
 # environment
@@ -110,14 +132,24 @@ MAKELEVEL := 0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
+# makefile (from 'Makefile', line 34)
+FIXPATH = $(subst /,\,$1)
+# makefile (from 'Makefile', line 7)
+CC = gcc
 # default
 MAKE_VERSION := 3.82.90
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := all
+# makefile (from 'Makefile', line 24)
+INCLUDE := include
+# makefile (from 'Makefile', line 31)
+SOURCEDIRS := src
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # automatic
 %D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
+# makefile (from 'Makefile', line 15)
+LFLAGS = 
 # environment
 LOCALAPPDATA = C:\Users\carol\AppData\Local
 # environment
@@ -146,6 +178,8 @@ PROMPT = $P$G
 MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
+# makefile (from 'Makefile', line 30)
+MAIN := main.exe
 # environment
 SYSTEMROOT = C:\WINDOWS
 # automatic
@@ -158,6 +192,8 @@ APPDATA = C:\Users\carol\AppData\Roaming
 TEMP = C:\Users\carol\AppData\Local\Temp
 # environment
 COMSPEC = C:\WINDOWS\system32\cmd.exe
+# makefile (from 'Makefile', line 18)
+OUTPUT := output
 # default
 MAKEFILES := 
 # environment
@@ -166,13 +202,16 @@ QUARTUS_ROOTDIR = C:\altera\13.0sp1\quartus
 <F = $(notdir $<)
 # environment
 LC_ALL = C
+# makefile (from 'Makefile', line 51)
+LIBS := -Llib
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
 # environment
 SYSTEMDRIVE = C:
-# environment
+# environ 
+ment
 SESSIONNAME = Console
 # environment
 PROCESSOR_REVISION = 8c01
@@ -180,6 +219,8 @@ PROCESSOR_REVISION = 8c01
 .INCLUDE_DIRS = C:/MinGW/include
 # default
 .RECIPEPREFIX := 
+# makefile (from 'Makefile', line 57)
+OBJECTS := src/main.o
 # environment
 LANG = C
 # environment
@@ -187,11 +228,11 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 12892
+VSCODE_PID = 16480
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
-# Load=90/1024=9%, Rehash=0, Collisions=11/105=10%
+# Load=109/1024=11%, Rehash=0, Collisions=13/154=8%
 
 # Pattern-specific Variable Values
 
@@ -203,7 +244,7 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin (key C:/Program Files/Eclipse Adoptium/jdk-17.0.2.8-hotspot/bin, mtime 1644935130): 122 files, no impossibilities.
 # C:\Users\carol\AppData\Local\GitHubDesktop\bin (key C:/Users/carol/AppData/Local/GitHubDesktop/bin, mtime 1641824609): 4 files, no impossibilities.
 # C:\WINDOWS\System32\WindowsPowerShell\v1.0\ (key C:/WINDOWS/System32/WindowsPowerShell/v1.0/, mtime 1634313266): 31 files, no impossibilities.
-# . (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados, mtime 1659895616): 7 files, no impossibilities.
+# . (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados, mtime 1660322942): 13 files, no impossibilities.
 # C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/carol/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1660167226): 4 files, no impossibilities.
 # C:\Program Files (x86)\Common Files\Oracle\Java\javapath (key C:/Program Files (x86)/Common Files/Oracle/Java/javapath, mtime 1644949653): 5 files, no impossibilities.
 # C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1641508032): 8 files, no impossibilities.
@@ -214,10 +255,11 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # C:\Program Files\ImageMagick-7.1.0-Q16-HDRI (key C:/Program Files/ImageMagick-7.1.0-Q16-HDRI, mtime 1641996487): 75 files, no impossibilities.
 # C:\MinGW\msys\1.0\bin (key C:/MinGW/msys/1.0/bin, mtime 1643379551): 160 files, no impossibilities so far.
 # C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1652267126): 155 files, no impossibilities.
+# src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1660321894): 4 files, no impossibilities.
 # C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659472163): 6 files, no impossibilities.
-# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660180483): 2810 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660332002): 2810 files, no impossibilities.
 
-# 3633 files, no impossibilities in 17 directories.
+# 3643 files, no impossibilities in 18 directories.
 
 # Implicit Rules
 
@@ -225,12 +267,55 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 
 # Files
 
-# Not a target:
-all:
+all: output main.exe
 #  Command line target.
-#  Implicit rule search has been done.
+#  Implicit rule search has not been done.
 #  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
+#  recipe to execute (from 'Makefile', line 68):
+	@echo Executing 'all' complete!
+
+.PHONY: clean
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
+
+# Not a target:
+src/main.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-12 13:31:35
+#  File has been updated.
+#  Successfully updated.
+
+main.exe: src/main.o
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := main.exe
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := src/main.o
+# automatic
+# | := 
+# automatic
+# < := src/main.o
+# automatic
+# ^ := src/main.o
+# automatic
+# ? := src/main.o
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=2/18=11%
+#  recipe to execute (from 'Makefile', line 74):
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS)
 
 # Not a target:
 .SUFFIXES:
@@ -241,16 +326,16 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-08-12 13:31:10
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 
-# Not a target:
-makefile:
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Failed to be updated.
+.c.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 81):
+	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@
 
 # Not a target:
 .DEFAULT:
@@ -258,31 +343,49 @@ makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-GNUmakefile:
-#  Implicit rule search has been done.
+run: all
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 90):
+	./$(OUTPUTMAIN)
+	@echo Executing 'run: all' complete!
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
 #  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 85):
+	$(RM) $(OUTPUTMAIN)
+	$(RM) $(call FIXPATH,$(OBJECTS))
+	@echo Cleanup complete!
+
+output:
+#  Implicit rule search has not been done.
+#  Last modified 2022-08-12 14:51:14
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 71):
+	$(MD) $(OUTPUT)
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/31=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general ('VPATH 
+' variable) search path.
 
-# strcache buffers: 7 (6) / strings = 3586 / storage = 53736 B / avg = 14 B
-# current buf: size = 8174 B / used = 4744 B / count = 356 / avg = 13 B
-# other used: total = 45562 B / count = 3230 / avg = 14 B
-# other free: total = 52 B / max = 14 B / min = 2 B / avg = 8 B
+# strcache buffers: 7 (6) / strings = 3595 / storage = 53819 B / avg = 14 B
+# current buf: size = 8174 B / used = 4822 B / count = 365 / avg = 13 B
+# other used: total = 45645 B / count = 3230 / avg = 14 B
+# other free: total = 47 B / max = 10 B / min = 3 B / avg = 7 B
 
-# strcache performance: lookups = 3658 / hit rate = 1%
+# strcache performance: lookups = 3687 / hit rate = 2%
 # hash-table stats:
-# Load=3586/8192=44%, Rehash=0, Collisions=1314/3658=36%
-# Finished Make data base on Thu Aug 11 19:22:18 2022
+# Load=3595/8192=44%, Rehash=0, Collisions=1325/3687=36%
+# Finished Make data base on Mon Aug 15 18:26:31 2022
 
  
-make.exe: *** No rule to make target 'all'.  Stop.
-

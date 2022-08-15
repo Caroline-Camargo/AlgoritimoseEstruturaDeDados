@@ -1,6 +1,0 @@
-make.exe --dry-run --always-make --keep-going --print-directory
-make.exe: Entering directory 'c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/AULA_1'
-make.exe: Leaving directory 'c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/AULA_1'
- 
-make.exe: *** No targets specified and no makefile found.  Stop.
-

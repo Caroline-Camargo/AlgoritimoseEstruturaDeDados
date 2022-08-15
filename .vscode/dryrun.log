@@ -1,6 +1,8 @@
 make.exe --dry-run --always-make --keep-going --print-directory
 make.exe: Entering directory 'c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados'
+mkdir output
+gcc -Wall -Wextra -g -Iinclude -c src/main.c  -o src/main.o
+gcc -Wall -Wextra -g -Iinclude -o output\main.exe src/main.o  -Llib
+echo Executing 'all' complete!
 make.exe: Leaving directory 'c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados'
  
-make.exe: *** No targets specified and no makefile found.  Stop.
-
