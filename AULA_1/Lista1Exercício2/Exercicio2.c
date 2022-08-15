@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 /*
     Faça um programa que armazena nomes.
@@ -27,6 +29,7 @@ int main() {
                 printf("Digite o nome que deseja adicionar: \n");
                 fflush(stdin);
                 scanf("%s", &nomeAdicionar);
+                strcat(nomeAdicionar,".");
                 
                 nomes = (char*)realloc(nomes, sizeof(nomeAdicionar) * sizeof(char) + 1);
                 if (!nomes){
@@ -42,11 +45,22 @@ int main() {
             break;
 
             case 2:
-            /* code */
+                printf("Digite o nome que deseja remover: \n");
+                fflush(stdin);
+                scanf("%s", &nomeAdicionar);
+
             break;
 
             case 3:
-                printf("\nVariavel  %s \n", nomes);
+                printf("\nLista dos nomes adicionados:\n");
+                for (i=0; i<=(strlen(nomes)); i++) {
+                    if (nomes[i] != '.'){
+                        printf("%c", nomes[i]);
+                    }
+                    if (nomes[i] == '.') {
+                        printf("\n");
+                    }
+                }
             break;
 
             case 4:
@@ -63,7 +77,7 @@ int main() {
 
 int Menu() {
     int opMenu;
-    printf("ESCOLHA UMA DAS OPCOES\n");
+    printf("\n\nESCOLHA UMA DAS OPCOES\n");
     printf("\t1) Adicionar nome\n");
     printf("\t2) Remover nome\n");
     printf("\t3) Listar\n");
