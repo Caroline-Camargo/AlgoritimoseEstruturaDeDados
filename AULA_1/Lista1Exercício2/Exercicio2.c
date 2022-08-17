@@ -16,60 +16,90 @@
 int menu();
 
 int main() {
-    int op=1;
-    char *nomes, nomeAdicionar[20], letra, i=0, j=0;
-    nomes = (char*)malloc(sizeof(char));
+    int op=1, i=0, j=0, pos=0, inicio;
+    char *nomes=NULL, nomeAdicionar[20], nomeRemover[20], *ponteiro;
+    
+    nomes = (char*)malloc(sizeof(char) +1);
+    nomes[0] = '\0';
+    if (!nomes){
+        printf("Erro na alocacao de memoria");
+        exit (1);
+    }
 
     while (op != 4) {
         op = Menu();
         switch (op) {
-            case 1:
-                //AdicionarNome(&i, &nomes);
-                j=0;
-                printf("Digite o nome que deseja adicionar: \n");
-                fflush(stdin);
-                scanf("%s", &nomeAdicionar);
-                strcat(nomeAdicionar,".");
-                
-                nomes = (char*)realloc(nomes, sizeof(nomeAdicionar) * sizeof(char) + 1);
-                if (!nomes){
-                    printf("Erro na alocacao de memoria");
-                    exit (1);
-                }
+        case 1: //Adicionar nomes
+            j=0;
+            printf("Digite o nome que deseja adicionar: \n");
+            fflush(stdin);
+            scanf("%s", &nomeAdicionar);
 
-                for (i; i<=(strlen(nomes)); i++) {
-                    nomes[i] = nomeAdicionar[j];
-                    j++;
-                }
-                i--;            
+            nomes = (char*)realloc(nomes, sizeof(nomeAdicionar) * sizeof(char) + 2);
+            if (!nomes){
+                printf("Erro na alocacao de memoria");
+                exit (1);
+            }
+
+        
+            strcat(nomeAdicionar,".");
+        
+
+            for (pos; pos<=(strlen(nomes)); pos++) {
+                nomes[pos] = nomeAdicionar[j];
+                j++;
+            }
+            strcat(nomes, "\0");
+            pos--;            
             break;
 
-            case 2:
-                printf("Digite o nome que deseja remover: \n");
-                fflush(stdin);
-                scanf("%s", &nomeAdicionar);
+        case 2: //Removendo nomes
+            printf("Digite o nome que deseja remover: \n");
+            fflush(stdin);
+            scanf("%s", &nomeRemover);
 
-            break;
+            ponteiro = strstr(nomes, nomeRemover);
+            if (ponteiro) {
+                inicio = strlen(nomes) - strlen(ponteiro);
+                if (inicio != 0 && nomes[inicio - 1] == '.') {
+                    inicio--;
+                    ponteiro--;
+                }
 
-            case 3:
-                printf("\nLista dos nomes adicionados:\n");
-                for (i=0; i<=(strlen(nomes)); i++) {
-                    if (nomes[i] != '.'){
-                        printf("%c", nomes[i]);
+                for (i=0; i<strlen(nomeRemover); i++) {
+                    for (j=0; j<strlen(ponteiro); j++) {
+                        nomes[inicio + j] = nomes[inicio + j + 1];
                     }
-                    if (nomes[i] == '.') {
-                        printf("\n");
-                    }
+                    pos--;
                 }
+
+                nomes = (char *)realloc(nomes, strlen(nomes) + 1 * sizeof(char));
+                strcat(nomes, "\0");  
+                printf("\nPalavra removida com sucesso"); 
+            } else{
+                printf("\nPalavra nao encontrada");
+            }
             break;
 
-            case 4:
-                printf("Opcao sair foi escolhida...\n");
+        case 3: //Listando nomes
+            printf("\nLista dos nomes adicionados:\n");
+            for (i=0; i<=(strlen(nomes)); i++) {
+                if (nomes[i] != '.'){
+                    printf("%c", nomes[i]);
+                }
+                if (nomes[i] == '.') {
+                    printf("\n");
+                }
+            }
+            break;
+
+        case 4: //Saindo do menu
+            printf("Opcao sair foi escolhida...\n");
             break;
         
-            default:
-                printf("\nATENCAO: Digite um numero valido\n");
-            break;
+        default:
+            printf("\nATENCAO: Digite um numero valido\n");
+        break;
         }
     }
     free(nomes);
@@ -85,25 +115,3 @@ int Menu() {
     scanf("%d", &opMenu);
     return opMenu;
 }
-
-void AdicionarNome(int *i, char *nomes) {
-    int j=0;
-    char nomeAdicionar[20];
-
-    printf("Digite o nome que deseja adicionar: \n");
-    fflush(stdin);
-    scanf("%s", &nomeAdicionar);
-                
-    nomes = (char*)realloc(nomes, sizeof(nomeAdicionar) * sizeof(char) + 1);
-    if (!nomes){
-        printf("Erro na alocacao de memoria");
-        exit (1);
-    }
-
-    for (*i; *i<=(strlen(nomes)); *i++) {
-        nomes[*i] = nomeAdicionar[j];
-        j++;
-    }
-    *i--;      
-} 
-
