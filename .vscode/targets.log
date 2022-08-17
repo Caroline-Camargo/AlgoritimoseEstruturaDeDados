@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Wed Aug 17 10:44:22 2022
+# Make data base, printed on Wed Aug 17 10:56:20 2022
 
 # Variables
 
@@ -30,7 +31,8 @@ INCLUDES := -Iinclude
 HOMEDRIVE = C:
 # automatic
 @F = $(notdir $@)
-# automatic
+# auto 
+matic
 ^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
 # makefile
 CURDIR := c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados
@@ -91,7 +93,7 @@ LIB := lib
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12864_YJXCLBYKDSBATDEU
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_2936_WQQBSOXKZKEPTMOD
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
@@ -121,7 +123,8 @@ INCLUDEDIRS := include
 # environment
 ONEDRIVECONSUMER = C:\Users\carol\OneDrive
 # environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+VSCODE_HANDLES_UNCAUGH 
+T_ERRORS = true
 # environment
 USERDOMAIN = LAPTOP-CI2F1HBH
 # environment
@@ -225,7 +228,7 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 12864
+VSCODE_PID = 2936
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
@@ -239,7 +242,8 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 
 # C:\Users\carol\AppData\Local\Microsoft\WindowsApps (key C:/Users/carol/AppData/Local/Microsoft/WindowsApps, mtime 1659746205): 35 files, no impossibilities.
 # C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin (key C:/Program Files/Eclipse Adoptium/jdk-17.0.2.8-hotspot/bin, mtime 1644935130): 122 files, no impossibilities.
-# C:\Users\carol\AppData\Local\GitHubDesktop\bin (key C:/Users/carol/AppData/Local/GitHubDesktop/bin, mtime 1641824609): 4 files, no impossibilities.
+# C:\Users\carol\AppData\Local\GitHubDesktop\bin (key C:/Users/carol/AppData/Local/GitHubDesktop/bin, m 
+time 1641824609): 4 files, no impossibilities.
 # C:\WINDOWS\System32\WindowsPowerShell\v1.0\ (key C:/WINDOWS/System32/WindowsPowerShell/v1.0/, mtime 1634313266): 31 files, no impossibilities.
 # . (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados, mtime 1660322942): 13 files, no impossibilities.
 # C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/carol/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1660167226): 4 files, no impossibilities.
@@ -269,7 +273,8 @@ all: output main.exe
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
-#  Needs to be updated (-q is set).
+# 
+  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/10=0%
 #  recipe to execute (from 'Makefile', line 68):
@@ -372,7 +377,8 @@ output:
 
 # No 'vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general ('VPATH'  
+variable) search path.
 
 # strcache buffers: 7 (6) / strings = 3595 / storage = 53819 B / avg = 14 B
 # current buf: size = 8174 B / used = 4822 B / count = 365 / avg = 13 B
@@ -382,6 +388,6 @@ output:
 # strcache performance: lookups = 3687 / hit rate = 2%
 # hash-table stats:
 # Load=3595/8192=44%, Rehash=0, Collisions=1325/3687=36%
-# Finished Make data base on Wed Aug 17 10:44:22 2022
+# Finished Make data base on Wed Aug 17 10:56:20 2022
 
  
