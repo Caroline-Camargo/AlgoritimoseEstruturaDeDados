@@ -17,9 +17,9 @@ int menu();
 
 int main() {
     int op=1, i=0, j=0, pos=0, inicio;
-    char *nomes=NULL, nomeAdicionar[20], nomeRemover[20], *ponteiro;
+    char *nomes=NULL, nomeAdicionar[20], nomeRemover[20], *ponteiro=NULL;
     
-    nomes = (char*)malloc(sizeof(char) +1);
+    nomes = (char*)malloc(sizeof(char) * 1);
     nomes[0] = '\0';
     if (!nomes){
         printf("Erro na alocacao de memoria");
@@ -41,9 +41,7 @@ int main() {
                 exit (1);
             }
 
-        
             strcat(nomeAdicionar,".");
-        
 
             for (pos; pos<=(strlen(nomes)); pos++) {
                 nomes[pos] = nomeAdicionar[j];
@@ -66,15 +64,14 @@ int main() {
                     ponteiro--;
                 }
 
-                for (i=0; i<strlen(nomeRemover); i++) {
+                for (i=0; i<=strlen(nomeRemover); i++) {
                     for (j=0; j<strlen(ponteiro); j++) {
                         nomes[inicio + j] = nomes[inicio + j + 1];
                     }
                     pos--;
                 }
 
-                nomes = (char *)realloc(nomes, strlen(nomes) + 1 * sizeof(char));
-                strcat(nomes, "\0");  
+                nomes = (char *)realloc(nomes, (strlen(nomes) * sizeof(char) + 1));
                 printf("\nPalavra removida com sucesso"); 
             } else{
                 printf("\nPalavra nao encontrada");
@@ -91,6 +88,7 @@ int main() {
                     printf("\n");
                 }
             }
+            puts(nomes);
             break;
 
         case 4: //Saindo do menu
