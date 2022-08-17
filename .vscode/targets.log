@@ -5,9 +5,8 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Mon Aug 15 18:26:31 2022
+# Make data base, printed on Tue Aug 16 22:13:21 2022
 
 # Variables
 
@@ -31,8 +30,7 @@ INCLUDES := -Iinclude
 HOMEDRIVE = C:
 # automatic
 @F = $(notdir $@)
-# auto 
-matic
+# automatic
 ^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
 # makefile
 CURDIR := c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados
@@ -93,7 +91,7 @@ LIB := lib
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16480_ZTKEULPCPVHZQIIZ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_6596_NVYWBNFQAEBBEUUQ
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
@@ -210,8 +208,7 @@ LIBS := -Llib
 SUFFIXES := 
 # environment
 SYSTEMDRIVE = C:
-# environ 
-ment
+# environment
 SESSIONNAME = Console
 # environment
 PROCESSOR_REVISION = 8c01
@@ -228,7 +225,7 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 16480
+VSCODE_PID = 6596
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
@@ -257,7 +254,7 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1652267126): 155 files, no impossibilities.
 # src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1660321894): 4 files, no impossibilities.
 # C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659472163): 6 files, no impossibilities.
-# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660332002): 2810 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660664721): 2810 files, no impossibilities.
 
 # 3643 files, no impossibilities in 18 directories.
 
@@ -363,7 +360,7 @@ clean:
 
 output:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-12 14:51:14
+#  Last modified 2022-08-15 18:38:09
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 71):
@@ -375,8 +372,7 @@ output:
 
 # No 'vpath' search paths.
 
-# No general ('VPATH 
-' variable) search path.
+# No general ('VPATH' variable) search path.
 
 # strcache buffers: 7 (6) / strings = 3595 / storage = 53819 B / avg = 14 B
 # current buf: size = 8174 B / used = 4822 B / count = 365 / avg = 13 B
@@ -386,6 +382,6 @@ output:
 # strcache performance: lookups = 3687 / hit rate = 2%
 # hash-table stats:
 # Load=3595/8192=44%, Rehash=0, Collisions=1325/3687=36%
-# Finished Make data base on Mon Aug 15 18:26:31 2022
+# Finished Make data base on Tue Aug 16 22:13:21 2022
 
  
