@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Aug 16 22:13:21 2022
+# Make data base, printed on Wed Aug 17 10:44:22 2022
 
 # Variables
 
@@ -41,7 +41,7 @@ RM := del /q /f
 # environment
 WINDIR = C:\WINDOWS
 # environment
-VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"89ebf7d0bb12d1282a52b02d65044dbc.pt-br","_translationsConfigFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\tcf.json","_cacheRoot":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br","_resolvedLanguagePackCoreLocation":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\6d9b74a70ca9c7733b29f0456fd8195364076dda","_corruptedFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\89ebf7d0bb12d1282a52b02d65044dbc.pt-br\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"8e7a008e83c664b9876a8f72ff0490ae.pt-br","_translationsConfigFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\tcf.json","_cacheRoot":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br","_resolvedLanguagePackCoreLocation":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\6d9b74a70ca9c7733b29f0456fd8195364076dda","_corruptedFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\corrupted.info","_languagePackSupport":true}
 # makefile (from 'Makefile', line 10)
 CFLAGS := -Wall -Wextra -g
 # environment
@@ -91,7 +91,7 @@ LIB := lib
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_6596_NVYWBNFQAEBBEUUQ
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_12864_YJXCLBYKDSBATDEU
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
@@ -225,7 +225,7 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 6596
+VSCODE_PID = 12864
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
@@ -254,7 +254,7 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1652267126): 155 files, no impossibilities.
 # src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1660321894): 4 files, no impossibilities.
 # C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659472163): 6 files, no impossibilities.
-# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660664721): 2810 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660698882): 2810 files, no impossibilities.
 
 # 3643 files, no impossibilities in 18 directories.
 
@@ -382,6 +382,6 @@ output:
 # strcache performance: lookups = 3687 / hit rate = 2%
 # hash-table stats:
 # Load=3595/8192=44%, Rehash=0, Collisions=1325/3687=36%
-# Finished Make data base on Tue Aug 16 22:13:21 2022
+# Finished Make data base on Wed Aug 17 10:44:22 2022
 
  
