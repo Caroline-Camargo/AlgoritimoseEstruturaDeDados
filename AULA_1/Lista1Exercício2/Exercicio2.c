@@ -20,7 +20,6 @@ int main() {
     char *nomes=NULL, nomeAdicionar[20], nomeRemover[20], *ponteiro=NULL;
     
     nomes = (char*)malloc(sizeof(char) * 1);
-    nomes[0] = '\0';
     if (!nomes){
         printf("Erro na alocacao de memoria");
         exit (1);
@@ -30,12 +29,11 @@ int main() {
         op = Menu();
         switch (op) {
         case 1: //Adicionar nomes
-            j=0;
             printf("Digite o nome que deseja adicionar: \n");
             fflush(stdin);
-            scanf("%s", &nomeAdicionar);
+            gets(nomeAdicionar);
 
-            nomes = (char*)realloc(nomes, sizeof(nomeAdicionar) * sizeof(char) + 2);
+            nomes = (char*)realloc(nomes, (strlen(nomes) + strlen(nomeAdicionar)) * sizeof(char) + 2);
             if (!nomes){
                 printf("Erro na alocacao de memoria");
                 exit (1);
@@ -43,23 +41,22 @@ int main() {
 
             strcat(nomeAdicionar,".");
 
-            for (pos; pos<=(strlen(nomes)); pos++) {
+            for (j=0; j<=(strlen(nomeAdicionar)); j++) {
                 nomes[pos] = nomeAdicionar[j];
-                j++;
+                pos++;
             }
-            strcat(nomes, "\0");
             pos--;            
             break;
 
         case 2: //Removendo nomes
             printf("Digite o nome que deseja remover: \n");
             fflush(stdin);
-            scanf("%s", &nomeRemover);
+            gets(nomeRemover);
 
             ponteiro = strstr(nomes, nomeRemover);
             if (ponteiro) {
                 inicio = strlen(nomes) - strlen(ponteiro);
-                if (inicio != 0 && nomes[inicio - 1] == '.') {
+                if (nomes[inicio - 1] == '.') {     
                     inicio--;
                     ponteiro--;
                 }
@@ -71,7 +68,7 @@ int main() {
                     pos--;
                 }
 
-                nomes = (char *)realloc(nomes, (strlen(nomes) * sizeof(char) + 1));
+                nomes = (char *)realloc(nomes, strlen(nomes) * sizeof(char) + 2);
                 printf("\nPalavra removida com sucesso"); 
             } else{
                 printf("\nPalavra nao encontrada");
@@ -79,16 +76,15 @@ int main() {
             break;
 
         case 3: //Listando nomes
-            printf("\nLista dos nomes adicionados:\n");
+            printf("\nLista dos nomes adicionados:\n\t");
             for (i=0; i<=(strlen(nomes)); i++) {
                 if (nomes[i] != '.'){
                     printf("%c", nomes[i]);
                 }
                 if (nomes[i] == '.') {
-                    printf("\n");
+                    printf("\n\t");
                 }
             }
-            puts(nomes);
             break;
 
         case 4: //Saindo do menu

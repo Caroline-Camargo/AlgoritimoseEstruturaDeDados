@@ -72,6 +72,7 @@ int Menu() {
 int inserirNum (int tamanhoN, float *arrayNumReais){
     float temp;
     tamanhoN++;
+
     arrayNumReais = (float*)realloc(arrayNumReais, tamanhoN * sizeof(float));
     if (!arrayNumReais){
         printf("Erro na alocacao de memoria");
@@ -80,6 +81,7 @@ int inserirNum (int tamanhoN, float *arrayNumReais){
 
     printf("\nPor favor, digite um numero: \n\t");
     scanf("%f", &temp);
+
     arrayNumReais[tamanhoN - 1] = temp;
     return tamanhoN; 
 }

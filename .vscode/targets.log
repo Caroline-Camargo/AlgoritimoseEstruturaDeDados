@@ -6,7 +6,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 17 10:57:41 2022
+# Make data base, printed on Thu Aug 18 18:40:41 2022
 
 # Variables
 
@@ -41,7 +41,7 @@ RM := del /q /f
 # environment
 WINDIR = C:\WINDOWS
 # environment
-VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"8e7a008e83c664b9876a8f72ff0490ae.pt-br","_translationsConfigFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\tcf.json","_cacheRoot":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br","_resolvedLanguagePackCoreLocation":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\6d9b74a70ca9c7733b29f0456fd8195364076dda","_corruptedFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"8e7a008e83c664b9876a8f72ff0490ae.pt-br","_translationsConfigFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\tcf.json","_cacheRoot":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br","_resolvedLanguagePackCoreLocation":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"C:\\Users\\carol\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\corrupted.info","_languagePackSupport":true}
 # makefile (from 'Makefile', line 10)
 CFLAGS := -Wall -Wextra -g
 # environment
@@ -91,7 +91,7 @@ LIB := lib
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_10680_QEWBVEIFJQUKUSTD
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_14616_JQFTWKJQPIICPRHV
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
@@ -109,7 +109,7 @@ PUBLIC = C:\Users\Public
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\carol\AppData\Roaming\Code\CachedData\6d9b74a70ca9c7733b29f0456fd8195364076dda
+VSCODE_CODE_CACHE_PATH = C:\Users\carol\AppData\Roaming\Code\CachedData\e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
@@ -165,7 +165,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 140 Stepping 1, GenuineIntel
 # environment
 OS = Windows_NT
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\768bcbecc7a473568612ec48de6c3f2c-1.70.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\768bcbecc7a473568612ec48de6c3f2c-1.70.2-main-sock
 # environment
 HOMEPATH = \Users\carol
 # environment
@@ -225,7 +225,7 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 10680
+VSCODE_PID = 14616
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
@@ -241,8 +241,8 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin (key C:/Program Files/Eclipse Adoptium/jdk-17.0.2.8-hotspot/bin, mtime 1644935130): 122 files, no impossibilities.
 # C:\Users\carol\AppData\Local\GitHubDesktop\bin (key C:/Users/carol/AppData/Local/GitHubDesktop/bin, mtime 1641824609): 4 files, no impossibilities.
 # C:\WINDOWS\System32\WindowsPowerShell\v1.0\ (key C:/WINDOWS/System32/WindowsPowerShell/v1.0/, mtime 1634313266): 31 files, no impossibilities.
-# . (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados, mtime 1660322942): 13 files, no impossibilities.
-# C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/carol/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1660167226): 4 files, no impossibilities.
+# . (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados, mtime 1660840966): 14 files, no impossibilities.
+# C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/carol/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1660771553): 4 files, no impossibilities.
 # C:\Program Files (x86)\Common Files\Oracle\Java\javapath (key C:/Program Files (x86)/Common Files/Oracle/Java/javapath, mtime 1644949653): 5 files, no impossibilities.
 # C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1641508032): 8 files, no impossibilities.
 # C:\WINDOWS\System32\OpenSSH\: could not be stat'd.
@@ -252,11 +252,11 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # C:\Program Files\ImageMagick-7.1.0-Q16-HDRI (key C:/Program Files/ImageMagick-7.1.0-Q16-HDRI, mtime 1641996487): 75 files, no impossibilities.
 # C:\MinGW\msys\1.0\bin (key C:/MinGW/msys/1.0/bin, mtime 1643379551): 160 files, no impossibilities so far.
 # C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1652267126): 155 files, no impossibilities.
-# src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1660321894): 4 files, no impossibilities.
+# src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1660841033): 4 files, no impossibilities.
 # C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659472163): 6 files, no impossibilities.
 # C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660698882): 2810 files, no impossibilities.
 
-# 3643 files, no impossibilities in 18 directories.
+# 3644 files, no impossibilities in 18 directories.
 
 # Implicit Rules
 
@@ -283,7 +283,7 @@ all: output main.exe
 # Not a target:
 src/main.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-12 13:31:35
+#  Last modified 2022-08-18 13:43:53
 #  File has been updated.
 #  Successfully updated.
 
@@ -323,7 +323,7 @@ main.exe: src/main.o
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-12 13:31:10
+#  Last modified 2022-08-18 13:42:46
 #  File has been updated.
 #  Successfully updated.
 
@@ -360,7 +360,7 @@ clean:
 
 output:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-15 18:38:09
+#  Last modified 2022-08-18 14:33:12
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 71):
@@ -374,14 +374,14 @@ output:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 7 (6) / strings = 3595 / storage = 53819 B / avg = 14 B
-# current buf: size = 8174 B / used = 4822 B / count = 365 / avg = 13 B
-# other used: total = 45645 B / count = 3230 / avg = 14 B
-# other free: total = 47 B / max = 10 B / min = 3 B / avg = 7 B
+# strcache buffers: 7 (6) / strings = 3596 / storage = 53826 B / avg = 14 B
+# current buf: size = 8174 B / used = 4834 B / count = 366 / avg = 13 B
+# other used: total = 45652 B / count = 3230 / avg = 14 B
+# other free: total = 52 B / max = 16 B / min = 3 B / avg = 8 B
 
-# strcache performance: lookups = 3687 / hit rate = 2%
+# strcache performance: lookups = 3688 / hit rate = 2%
 # hash-table stats:
-# Load=3595/8192=44%, Rehash=0, Collisions=1325/3687=36%
-# Finished Make data base on Wed Aug 17 10:57:41 2022
+# Load=3596/8192=44%, Rehash=0, Collisions=1325/3688=36%
+# Finished Make data base on Thu Aug 18 18:40:41 2022
 
  
