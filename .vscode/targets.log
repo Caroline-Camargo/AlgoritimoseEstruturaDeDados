@@ -5,8 +5,9 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Thu Aug 18 18:40:41 2022
+# Make data base, printed on Fri Aug 19 18:21:53 2022
 
 # Variables
 
@@ -63,7 +64,7 @@ PROGRAMDATA = C:\ProgramData
 # environment
 VSCODE_CWD = C:\Users\carol\AppData\Local\Programs\Microsoft VS Code
 # environment
-PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin;C:\Program Files\ImageMagick-7.1.0-Q16-HDRI;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\MinGW\bin;C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\GnuWin32\bin;C:\Users\carol\AppData\Local\Microsoft\WindowsApps;C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\Users\carol\AppData\Local\GitHubDesktop\bin;C:\GnuWin32\bin;C:\MinGW\msys\1.0\bin;C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;C:\msys64\GnuWin32\bin;C:\Program Files\Java\jdk1.8.0_321\bin;C:\Program Files\Java\jre1.8.0_321\bin;C:\ffmpeg\bin;C:\Program Files (x86)\Dr. Memory\bin\
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\MinGW\bin;C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\GnuWin32\bin;C:\Users\carol\AppData\Local\Microsoft\WindowsApps;C:\Users\carol\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\Users\carol\AppData\Local\GitHubDesktop\bin;C:\GnuWin32\bin;C:\MinGW\msys\1.0\bin;C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;C:\msys64\GnuWin32\bin;C:\Program Files\Java\jdk1.8.0_321\bin;C:\Program Files\Java\jre1.8.0_321\bin;C:\ffmpeg\bin;C:\Program Files (x86)\Dr. Memory\bin\
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # environment
@@ -91,7 +92,7 @@ LIB := lib
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_14616_JQFTWKJQPIICPRHV
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1440_BTPRPOIWCYMFAFLW
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
@@ -225,7 +226,7 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 14616
+VSCODE_PID = 1440
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
@@ -246,17 +247,16 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # C:\Program Files (x86)\Common Files\Oracle\Java\javapath (key C:/Program Files (x86)/Common Files/Oracle/Java/javapath, mtime 1644949653): 5 files, no impossibilities.
 # C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1641508032): 8 files, no impossibilities.
 # C:\WINDOWS\System32\OpenSSH\: could not be stat'd.
-# C:\GnuWin32\bin (key C:/GnuWin32/bin, mtime 1642530982): 7 files, no impossibilities.
+# C:\GnuWin32\bin: could not be stat'd.
 # C:\MinGW\bin (key C:/MinGW/bin, mtime 1643207478): 84 files, no impossibilities.
 # C:\WINDOWS (key C:/WINDOWS, mtime 1659471277): 120 files, no impossibilities.
-# C:\Program Files\ImageMagick-7.1.0-Q16-HDRI (key C:/Program Files/ImageMagick-7.1.0-Q16-HDRI, mtime 1641996487): 75 files, no impossibilities.
 # C:\MinGW\msys\1.0\bin (key C:/MinGW/msys/1.0/bin, mtime 1643379551): 160 files, no impossibilities so far.
 # C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1652267126): 155 files, no impossibilities.
 # src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1660841033): 4 files, no impossibilities.
 # C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659472163): 6 files, no impossibilities.
-# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660698882): 2810 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660914256): 2810 files, no impossibilities.
 
-# 3644 files, no impossibilities in 18 directories.
+# 3562 files, no impossibilities in 17 directories.
 
 # Implicit Rules
 
@@ -360,7 +360,7 @@ clean:
 
 output:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-18 14:33:12
+#  Last modified 2022-08-19 13:07:29
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 71):
@@ -374,14 +374,14 @@ output:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 7 (6) / strings = 3596 / storage = 53826 B / avg = 14 B
-# current buf: size = 8174 B / used = 4834 B / count = 366 / avg = 13 B
-# other used: total = 45652 B / count = 3230 / avg = 14 B
-# other free: total = 52 B / max = 16 B / min = 3 B / avg = 8 B
+# strcache buffers: 7 (6) / strings = 3529 / storage = 52761 B / avg = 14 B
+# current buf: size = 8174 B / used = 3763 B / count = 300 / avg = 12 B
+# other used: total = 44587 B / count = 3229 / avg = 13 B
+# other free: total = 46 B / max = 10 B / min = 5 B / avg = 7 B
 
-# strcache performance: lookups = 3688 / hit rate = 2%
+# strcache performance: lookups = 3605 / hit rate = 2%
 # hash-table stats:
-# Load=3596/8192=44%, Rehash=0, Collisions=1325/3688=36%
-# Finished Make data base on Thu Aug 18 18:40:41 2022
+# Load=3529/8192=43%, Rehash=0, Collisions=1257/3605=35%
+# Finished Make data base on Fri Aug 19 18:21:53 2022
 
  

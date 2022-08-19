@@ -8,10 +8,10 @@
         • Não pergunte para o usuário quantas pessoas ele vai incluir.
         • Não pode alocar espaço para mais pessoas do que o necessário.   
         • Cada pessoa tem nome[10], idade e telefone
-
 */
+
 int Menu();
-void InserirAgenda();
+void InserirAgenda(int *numPessoas, char *nome, int *idade, int *telefone);
 void ApagarAgenda();
 void BuscarAgenda();
 void ListarAgenda();
@@ -19,18 +19,56 @@ void ListarAgenda();
 void *pBuffer = NULL;
 
 int main() {
-    char nome;
-    int numPessoas, idade, telefone;
+    char *nome = NULL;
+    int *numPessoas = NULL, *idade = NULL, *telefone = NULL;
+    
+    //Alocando espaço para os void
+    pBuffer = (void*)malloc(sizeof(int) + sizeof(char)*10 + 1 + sizeof(int) + sizeof(int));
+    
+    if (pBuffer==NULL){
+        printf("Erro na alocacao de memoria");
+        exit (1);
+    }
 
-    pBuffer = malloc(1);
-    pBuffer = 0;
+    printf("TAMANHO OCUPADO POR pBuffer: %d", sizeof(pBuffer));
+
+    numPessoas = &pBuffer;
+    nome = &numPessoas + sizeof(int);
+    idade = &nome + sizeof(char) * 10 + 1;
+    telefone = &idade + sizeof(int);
+    
+    if (numPessoas==NULL || nome==NULL || idade==NULL || telefone==NULL){
+        printf("Erro na alocacao de memoria");
+        exit (1);
+    }
+
+    *numPessoas = 1;
+    strcpy(nome,"caroline");
+    *idade = 20;
+    *telefone = 999;
+    printf("\n\nVALOR NOS PONTEIROS: %d, %s, %d, %d", *numPessoas, nome, *idade, *telefone);
+    printf("\nVALORES NO VOID: %d, %s, %d", (int *)pBuffer, (char *)(&numPessoas+sizeof(int)), (int *)(&nome + sizeof(char)*10 + 1)); 
+
+    printf("\nTAMANHO OCUPADO POR pBuffer: %d", sizeof(pBuffer));
 
     int opMenu = Menu(); 
     while (opMenu != 5) {
         opMenu = Menu();
         switch (opMenu) {
         case 1:
-            InserirAgenda();
+            //InserirAgenda(numPessoas, nome, idade, telefone);
+            //nome = &numPessoas + sizeof(int);
+            //idade = &nome + sizeof(nome) * 10;
+            //telefone = &idade + sizeof(int);
+
+            //printf("Digite o nome que deseja incluir: ");
+            //gets(nome);
+
+            //pBuffer = (void*)realloc(pBuffer, sizeof(pBuffer) + sizeof(nome));
+            //if (!pBuffer){
+            //    printf("Erro na alocacao de memoria");
+            //    exit (1);
+            //}
             break;
         case 2:
             ApagarAgenda();
@@ -46,6 +84,11 @@ int main() {
 
         case 5:
             //SAIR
+            free(numPessoas);
+            free(nome);
+            free(idade);
+            free(telefone);
+            free(pBuffer);
             printf("Opcao sair foi escolhida...\n");
             break;
         
@@ -70,8 +113,22 @@ int Menu() {
     return opMenu;
 }
 
-void InserirAgenda(){
+void InserirAgenda(int *numPessoas, char *nome, int *idade, int *telefone){
 
+    nome = &numPessoas + sizeof(int);
+    idade = &nome + sizeof(nome) * 10;
+    telefone = &idade + sizeof(int);
+
+    printf("Digite o nome que deseja incluir: ");
+    gets(nome);
+
+    pBuffer = (void*)realloc(pBuffer, sizeof(pBuffer) + sizeof(nome));
+    if (!pBuffer){
+        printf("Erro na alocacao de memoria");
+        exit (1);
+    }
+
+    
 }
 
 void ApagarAgenda(){
