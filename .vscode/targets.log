@@ -7,7 +7,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Mon Aug 22 21:46:11 2022
+# Make data base, printed on Tue Aug 23 17:55:52 2022
 
 # Variables
 
@@ -31,7 +31,8 @@ INCLUDES := -Iinclude
 HOMEDRIVE = C:
 # automatic
 @F = $(notdir $@)
-# automatic
+# auto 
+matic
 ^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
 # makefile
 CURDIR := c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados
@@ -92,7 +93,7 @@ LIB := lib
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_8004_UBXXJNNSKREFZLEY
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_9340_PLSANVPAZKYYBRYN
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
@@ -146,7 +147,8 @@ SOURCEDIRS := src
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # automatic
-%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
+%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)) 
+)
 # makefile (from 'Makefile', line 15)
 LFLAGS = 
 # environment
@@ -226,7 +228,7 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 8004
+VSCODE_PID = 9340
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
@@ -234,7 +236,8 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 
 # Pattern-specific Variable Values
 
-# No pattern-specific variable values.
+# No pattern-specific var 
+iable values.
 
 # Directories
 
@@ -250,7 +253,8 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # C:\GnuWin32\bin: could not be stat'd.
 # C:\MinGW\bin (key C:/MinGW/bin, mtime 1643207478): 84 files, no impossibilities.
 # C:\WINDOWS (key C:/WINDOWS, mtime 1659471277): 120 files, no impossibilities.
-# C:\MinGW\msys\1.0\bin (key C:/MinGW/msys/1.0/bin, mtime 1643379551): 160 files, no impossibilities so far.
+# C:\MinGW\msys\1.0\bin (key C:/MinGW/msys/1.0/bin, 
+ mtime 1643379551): 160 files, no impossibilities so far.
 # C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1652267126): 155 files, no impossibilities.
 # src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1660841033): 4 files, no impossibilities.
 # C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659472163): 6 files, no impossibilities.
@@ -322,7 +326,8 @@ main.exe: src/main.o
 
 # Not a target:
 Makefile:
-#  Implicit rule search has been done.
+#  Implicit rule search 
+ has been done.
 #  Last modified 2022-08-18 13:42:46
 #  File has been updated.
 #  Successfully updated.
@@ -360,7 +365,7 @@ clean:
 
 output:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-20 14:08:07
+#  Last modified 2022-08-22 22:22:42
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 71):
@@ -377,11 +382,12 @@ output:
 # strcache buffers: 7 (6) / strings = 3529 / storage = 52761 B / avg = 14 B
 # current buf: size = 8174 B / used = 3763 B / count = 300 / avg = 12 B
 # other used: total = 44587 B / count = 3229 / avg = 13 B
-# other free: total = 46 B / max = 10 B / min = 5 B / avg = 7 B
+# other 
+ free: total = 46 B / max = 10 B / min = 5 B / avg = 7 B
 
 # strcache performance: lookups = 3605 / hit rate = 2%
 # hash-table stats:
 # Load=3529/8192=43%, Rehash=0, Collisions=1257/3605=35%
-# Finished Make data base on Mon Aug 22 21:46:11 2022
+# Finished Make data base on Tue Aug 23 17:55:52 2022
 
  
