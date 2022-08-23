@@ -7,7 +7,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Fri Aug 19 18:21:53 2022
+# Make data base, printed on Mon Aug 22 21:46:11 2022
 
 # Variables
 
@@ -92,7 +92,7 @@ LIB := lib
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1440_BTPRPOIWCYMFAFLW
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_8004_UBXXJNNSKREFZLEY
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
@@ -226,7 +226,7 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 1440
+VSCODE_PID = 8004
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
@@ -360,7 +360,7 @@ clean:
 
 output:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-19 13:07:29
+#  Last modified 2022-08-20 14:08:07
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 71):
@@ -382,6 +382,6 @@ output:
 # strcache performance: lookups = 3605 / hit rate = 2%
 # hash-table stats:
 # Load=3529/8192=43%, Rehash=0, Collisions=1257/3605=35%
-# Finished Make data base on Fri Aug 19 18:21:53 2022
+# Finished Make data base on Mon Aug 22 21:46:11 2022
 
  
