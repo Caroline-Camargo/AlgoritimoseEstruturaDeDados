@@ -17,67 +17,66 @@ void BuscarAgenda();
 void ListarAgenda();
 
 void *pBuffer = NULL;
+const int TAMANHOBASE = sizeof(char) * 10 + 1 + sizeof(int) + sizeof(int);
 
 int main() {
     char *nome = NULL;
-    int *numPessoas = NULL, *idade = NULL, *telefone = NULL;
+    int *numPessoas = NULL, *idade = NULL;
+    int *telefone = NULL;
     
-    //Alocando espaço para os void
-    pBuffer = (void*)(malloc(sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int) + sizeof(int)));
-    
+    //Alocando espaço para o ponteiro void
+    pBuffer = (void*)(malloc(TAMANHOBASE + sizeof(int)));
     if (pBuffer==NULL){
         printf("Erro na alocacao de memoria");
         exit (1);
     }
 
-    printf("TAMANHO OCUPADO POR pBuffer: %d", sizeof(pBuffer)); //Não condiz com que foi alocado ali em cima :/
-
+    //Definindo endereço incial para os ponteiros
     numPessoas = pBuffer;
-    if (numPessoas==NULL){
+    nome = pBuffer + sizeof(int);
+    idade = pBuffer + sizeof(int) + sizeof(char) * 10 + 1;    
+    telefone = pBuffer + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int) ;
+    if (numPessoas==NULL || nome==NULL || idade==NULL || telefone==NULL){
         printf("Erro na alocacao de memoria");
         exit (1);
     }
-    *numPessoas = (int*)(0);
+    *numPessoas = 0;
     
     int opMenu = 0; 
     while (opMenu != 5) {
         opMenu = Menu();
         switch (opMenu) {
         case 1:
-        *numPessoas = (int*)(*numPessoas + 1);
-        printf("\nentrou1");
-        if (*numPessoas == 1) {
-            nome = (char*)(numPessoas + sizeof(int));
-            if (!nome) {
-                printf("Erro na alocacao de memoria 00");
-            }
-            printf("\nentrou2");
-        } else {
-            printf("\nentrou3");
-            pBuffer = (void*)(realloc(pBuffer, sizeof(pBuffer) + sizeof(int) + sizeof(char)*10 + 1 + sizeof(int) + sizeof(int)));
-            if (!pBuffer){
-                printf("Erro na alocacao de memoria 01");
-                exit (1);
-            }
-            nome = (char*)(telefone + sizeof(int));
-            if (!nome) {
-                printf("Erro na alocacao de memoria 02");
-            }
-        } 
-    
-        idade = (int*)(nome + (sizeof(char) * 10 + 1));    
-        telefone = (int*)(idade + sizeof(int));
-    
-        if (idade==NULL || telefone==NULL){
-            printf("Erro na alocacao de memoria 03");
-            exit (1);
-        }
-            InserirAgenda(pBuffer, nome, idade, telefone);
+            printf("\nentrou1");
+            *numPessoas = (int*)(*numPessoas + 1);
+            if (*numPessoas != 1) {
+                printf("\nentrou3");
+                pBuffer = (void*)(realloc(pBuffer, TAMANHOBASE * (*numPessoas) + sizeof(int)));
+                if (!pBuffer){
+                    printf("Erro na alocacao de memoria 01");
+                    exit (1);
+                }
+                nome = pBuffer + sizeof(int) + TAMANHOBASE * (*numPessoas-1);
+                if (!nome) {
+                    printf("Erro na alocacao de memoria 02");
+                }
+
+                idade = pBuffer + sizeof(int) + TAMANHOBASE * (*numPessoas-1) + sizeof(char) * 10 + 1; 
+                if (idade==NULL){
+                    printf("Erro na alocacao de memoria 03");
+                    exit (1);
+                }   
+
+                telefone = pBuffer + sizeof(int) + TAMANHOBASE * (*numPessoas-1) + sizeof(char) * 10 + 1 + sizeof(int);
+                if (telefone==NULL){
+                    printf("Erro na alocacao de memoria 04");
+                    exit (1);
+                }
+            } 
             
-            printf("\n\nVALOR NOS PONTEIROS: %d, %s, %d, %d", *numPessoas, nome, *idade, *telefone);
-            //puts(nome);
-            printf("\nVALORES NO VOID: %d, %s, %d, %d", *(int *)(numPessoas), (char *)(numPessoas + sizeof(int)), *(int *)(nome + sizeof(char) * 10 + 1), *(int *)(idade + sizeof(int)));  
-            printf("\naaaa");
+            InserirAgenda(pBuffer, nome, idade, telefone);
+            ListarAgenda(numPessoas);
+            
             break;
         case 2:
             ApagarAgenda();
@@ -123,32 +122,24 @@ int Menu() {
 }
 
 void InserirAgenda(int *numPessoas, char *nome, int *idade, int *telefone){
-    
+    char tempChar[10];
+    int tempInt1;
+    int tempInt2;
+
     printf("\nDigite o nome que deseja incluir: ");
     fflush(stdin);
-    char tempNome[10];
-    gets(tempNome);
-
-    strcpy(nome,tempNome);
-    strcat(tempNome, "\0");
+    gets(tempChar);
+    strcpy(nome,tempChar);
 
     printf("\nDigite a idade: ");
     fflush(stdin);
-    int tempIdade;
-    scanf("%d", &tempIdade);
-
-    *idade = (int*)(tempIdade);
+    scanf("%d", &tempInt1);
+    *idade = tempInt1;
 
     printf("\nDigite o telefone: ");
-    int tempTelefone;
     fflush(stdin);
-    scanf("%d", &tempTelefone);
-
-    *telefone = (int*)(tempTelefone);
-
-    printf("\n\nVALOR NOS PONTEIROS: %d, %s, %d, %d", *numPessoas, nome, *idade, *telefone);
-    printf("\nVALORES NO VOID: %d, %s, %d, %d", *(int *)(pBuffer), (char *)(numPessoas + sizeof(int)), *(int *)(nome + sizeof(char) * 10 + 1), *(int *)(idade + sizeof(int)));  
-    printf("\naaaa");
+    scanf("%ld", &tempInt2);
+    *telefone = tempInt2;
 }
 
 void ApagarAgenda(){
@@ -159,6 +150,23 @@ void BuscarAgenda(){
 
 }
 
-void ListarAgenda(){
+void ListarAgenda(int *numPessoas){
+    printf("\n LISTA DE PESSOAS ADICIONADAS: ");  
+    if (*numPessoas == 0) {
+        printf("\n\tNenhuma pessoa foi adicionada");
+    } else {
+        printf(" %d", *(int*)(pBuffer));
+        for (int i=1; i<=(*numPessoas); i++) {
+            if (i == 1) {
+                printf("\n\tNome %d: %s", i, (char*)(pBuffer + sizeof(int)));
+                printf("\n\tIdade: %d", *(int*)(pBuffer + sizeof(int) + sizeof(char) * 10 + 1));
+                printf("\n\tTelefone: %ld", *(int*)(pBuffer + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
+            } else {
+                printf("\n\n\tNome %d: %s", i, (char*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int)));
+                printf("\n\tIdade: %d", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1));
+                printf("\n\tTelefone: %ld", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
+            }
+        }
+    }    
 }
 

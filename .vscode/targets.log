@@ -7,7 +7,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Tue Aug 23 17:55:52 2022
+# Make data base, printed on Fri Aug 26 10:47:44 2022
 
 # Variables
 
@@ -31,8 +31,7 @@ INCLUDES := -Iinclude
 HOMEDRIVE = C:
 # automatic
 @F = $(notdir $@)
-# auto 
-matic
+# automatic
 ^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
 # makefile
 CURDIR := c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados
@@ -93,7 +92,7 @@ LIB := lib
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_9340_PLSANVPAZKYYBRYN
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11260_WRJKHKONTIASGZSX
 # environment
 COMPUTERNAME = LAPTOP-CI2F1HBH
 # environment
@@ -147,8 +146,7 @@ SOURCEDIRS := src
 # environment
 PROGRAMFILES(X86) = C:\Program Files (x86)
 # automatic
-%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)) 
-)
+%D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
 # makefile (from 'Makefile', line 15)
 LFLAGS = 
 # environment
@@ -228,7 +226,7 @@ PROCESSOR_LEVEL = 6
 # environment
 FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-VSCODE_PID = 9340
+VSCODE_PID = 11260
 # environment
 USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 # variable set hash-table stats:
@@ -236,12 +234,11 @@ USERDOMAIN_ROAMINGPROFILE = LAPTOP-CI2F1HBH
 
 # Pattern-specific Variable Values
 
-# No pattern-specific var 
-iable values.
+# No pattern-specific variable values.
 
 # Directories
 
-# C:\Users\carol\AppData\Local\Microsoft\WindowsApps (key C:/Users/carol/AppData/Local/Microsoft/WindowsApps, mtime 1659746205): 35 files, no impossibilities.
+# C:\Users\carol\AppData\Local\Microsoft\WindowsApps (key C:/Users/carol/AppData/Local/Microsoft/WindowsApps, mtime 1661465407): 35 files, no impossibilities.
 # C:\Program Files\Eclipse Adoptium\jdk-17.0.2.8-hotspot\bin (key C:/Program Files/Eclipse Adoptium/jdk-17.0.2.8-hotspot/bin, mtime 1644935130): 122 files, no impossibilities.
 # C:\Users\carol\AppData\Local\GitHubDesktop\bin (key C:/Users/carol/AppData/Local/GitHubDesktop/bin, mtime 1641824609): 4 files, no impossibilities.
 # C:\WINDOWS\System32\WindowsPowerShell\v1.0\ (key C:/WINDOWS/System32/WindowsPowerShell/v1.0/, mtime 1634313266): 31 files, no impossibilities.
@@ -253,12 +250,11 @@ iable values.
 # C:\GnuWin32\bin: could not be stat'd.
 # C:\MinGW\bin (key C:/MinGW/bin, mtime 1643207478): 84 files, no impossibilities.
 # C:\WINDOWS (key C:/WINDOWS, mtime 1659471277): 120 files, no impossibilities.
-# C:\MinGW\msys\1.0\bin (key C:/MinGW/msys/1.0/bin, 
- mtime 1643379551): 160 files, no impossibilities so far.
+# C:\MinGW\msys\1.0\bin (key C:/MinGW/msys/1.0/bin, mtime 1643379551): 160 files, no impossibilities so far.
 # C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1652267126): 155 files, no impossibilities.
-# src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1660841033): 4 files, no impossibilities.
+# src (key c:/Users/carol/CodigosGitHub/AlgoritimoseEstruturaDeDados/src, mtime 1661292434): 4 files, no impossibilities.
 # C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659472163): 6 files, no impossibilities.
-# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660914256): 2810 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1661477614): 2810 files, no impossibilities.
 
 # 3562 files, no impossibilities in 17 directories.
 
@@ -287,7 +283,7 @@ all: output main.exe
 # Not a target:
 src/main.o:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 13:43:53
+#  Last modified 2022-08-23 19:07:14
 #  File has been updated.
 #  Successfully updated.
 
@@ -326,8 +322,7 @@ main.exe: src/main.o
 
 # Not a target:
 Makefile:
-#  Implicit rule search 
- has been done.
+#  Implicit rule search has been done.
 #  Last modified 2022-08-18 13:42:46
 #  File has been updated.
 #  Successfully updated.
@@ -365,7 +360,7 @@ clean:
 
 output:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-22 22:22:42
+#  Last modified 2022-08-23 19:08:17
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 71):
@@ -382,12 +377,11 @@ output:
 # strcache buffers: 7 (6) / strings = 3529 / storage = 52761 B / avg = 14 B
 # current buf: size = 8174 B / used = 3763 B / count = 300 / avg = 12 B
 # other used: total = 44587 B / count = 3229 / avg = 13 B
-# other 
- free: total = 46 B / max = 10 B / min = 5 B / avg = 7 B
+# other free: total = 46 B / max = 10 B / min = 5 B / avg = 7 B
 
 # strcache performance: lookups = 3605 / hit rate = 2%
 # hash-table stats:
 # Load=3529/8192=43%, Rehash=0, Collisions=1257/3605=35%
-# Finished Make data base on Tue Aug 23 17:55:52 2022
+# Finished Make data base on Fri Aug 26 10:47:44 2022
 
  
