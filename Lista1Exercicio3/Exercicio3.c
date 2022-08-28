@@ -13,7 +13,7 @@
 int Menu();
 void InserirAgenda(int *numPessoas, char *nome, int *idade, int *telefone);
 void ApagarAgenda();
-void BuscarAgenda();
+void BuscarAgenda(int *numPessoas);
 void ListarAgenda();
 
 void *pBuffer = NULL;
@@ -83,11 +83,11 @@ int main() {
             break;
 
         case 3:
-            BuscarAgenda();
+            BuscarAgenda(numPessoas);
             break;
 
         case 4:
-            ListarAgenda();
+            ListarAgenda(numPessoas);
             break;
 
         case 5:
@@ -146,8 +146,15 @@ void ApagarAgenda(){
 
 }
 
-void BuscarAgenda(){
-
+void BuscarAgenda(int *numPessoas){
+    char nomeBusca[10];
+    printf("\n\tDigite a palavra que deseja buscar: ");
+    scanf("%s", nomeBusca);
+    for (int i = 0; i < *numPessoas; i++) {
+        if (strcmp(nomeBusca, pBuffer + TAMANHOBASE * (i-1) + sizeof(int)) == 0){
+            printf("\nAchou");
+        }
+    }
 }
 
 void ListarAgenda(int *numPessoas){
