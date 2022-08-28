@@ -12,7 +12,7 @@
 
 int Menu();
 void InserirAgenda(int *numPessoas, char *nome, int *idade, int *telefone);
-void ApagarAgenda();
+void ApagarAgenda(int *numPessoas);
 void BuscarAgenda(int *numPessoas);
 void ListarAgenda();
 
@@ -47,10 +47,8 @@ int main() {
         opMenu = Menu();
         switch (opMenu) {
         case 1:
-            printf("\nentrou1");
             *numPessoas = (int*)(*numPessoas + 1);
             if (*numPessoas != 1) {
-                printf("\nentrou3");
                 pBuffer = (void*)(realloc(pBuffer, TAMANHOBASE * (*numPessoas) + sizeof(int)));
                 if (!pBuffer){
                     printf("Erro na alocacao de memoria 01");
@@ -73,13 +71,12 @@ int main() {
                     exit (1);
                 }
             } 
-            
             InserirAgenda(pBuffer, nome, idade, telefone);
             ListarAgenda(numPessoas);
-            
             break;
+
         case 2:
-            ApagarAgenda();
+            ApagarAgenda(numPessoas);
             break;
 
         case 3:
@@ -92,10 +89,6 @@ int main() {
 
         case 5:
             //SAIR
-            free(numPessoas);
-            free(nome);
-            free(idade);
-            free(telefone);
             free(pBuffer);
             printf("Opcao sair foi escolhida...\n");
             break;
@@ -105,8 +98,6 @@ int main() {
             break;
         }
     }
-    
-    free(pBuffer);
 }
 
 int Menu() {
@@ -138,21 +129,48 @@ void InserirAgenda(int *numPessoas, char *nome, int *idade, int *telefone){
 
     printf("\nDigite o telefone: ");
     fflush(stdin);
-    scanf("%ld", &tempInt2);
+    scanf("%d", &tempInt2);
     *telefone = tempInt2;
 }
 
-void ApagarAgenda(){
-
+void ApagarAgenda(int *numPessoas){
+    char nomeBusca[10];
+    int temp = 0;
+    printf("\n\tDigite a palavra que deseja excluir: ");
+    scanf("%s", nomeBusca);
+    for (int i = 1; i <= *numPessoas; i++) {
+        if (strcmp(nomeBusca, (char*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int))) == 0){
+            temp = 1;
+            printf("\n\tPalavra Encontrada");
+            printf("\n\tNOME: %s", (char*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int)));
+            printf("\n\tIDADE: %d", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1));
+            printf("\n\tTELEFONE: %d", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
+            
+            strcpy((char *)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int)), (char *) (pBuffer + (TAMANHOBASE * (i)) + sizeof(int)));
+            *(int *)(pBuffer + (TAMANHOBASE * (i-1)) + sizeof(int) + sizeof(char) * 10 + 1) = *(int *) (pBuffer + (TAMANHOBASE * (i)) + sizeof(int) + sizeof(char) * 10 + 1);
+            strcpy((char *)(pBuffer + (TAMANHOBASE * (i-1)) + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)), (char *) (pBuffer + (TAMANHOBASE * (i)) + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
+            printf("\n\tPalavra Removida");
+        }
+    }
+    if (temp == 1) {
+        pBuffer = (void*) realloc(pBuffer, (*numPessoas - 1) * TAMANHOBASE + sizeof(int));
+        *numPessoas = *numPessoas - 1;
+    } else {
+        printf("\n\tPalavra nao encontrada");
+    }
 }
 
 void BuscarAgenda(int *numPessoas){
     char nomeBusca[10];
     printf("\n\tDigite a palavra que deseja buscar: ");
     scanf("%s", nomeBusca);
-    for (int i = 0; i < *numPessoas; i++) {
-        if (strcmp(nomeBusca, pBuffer + TAMANHOBASE * (i-1) + sizeof(int)) == 0){
-            printf("\nAchou");
+    for (int i = 1; i <= *numPessoas; i++) {
+        printf("\nAA");
+        if (strcmp(nomeBusca, (char*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int))) == 0){
+            printf("\n\tPalavra Encontrada");
+            printf("\n\tNOME: %s", (char*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int)));
+            printf("\n\tIDADE: %d", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1));
+            printf("\n\tTELEFONE: %d", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
         }
     }
 }
@@ -167,13 +185,12 @@ void ListarAgenda(int *numPessoas){
             if (i == 1) {
                 printf("\n\tNome %d: %s", i, (char*)(pBuffer + sizeof(int)));
                 printf("\n\tIdade: %d", *(int*)(pBuffer + sizeof(int) + sizeof(char) * 10 + 1));
-                printf("\n\tTelefone: %ld", *(int*)(pBuffer + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
+                printf("\n\tTelefone: %d", *(int*)(pBuffer + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
             } else {
                 printf("\n\n\tNome %d: %s", i, (char*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int)));
                 printf("\n\tIdade: %d", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1));
-                printf("\n\tTelefone: %ld", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
+                printf("\n\tTelefone: %d", *(int*)(pBuffer + TAMANHOBASE * (i-1) + sizeof(int) + sizeof(char) * 10 + 1 + sizeof(int)));
             }
         }
     }    
 }
-
