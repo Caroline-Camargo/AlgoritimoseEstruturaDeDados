@@ -3,7 +3,7 @@
 #include <string.h>
 
 int Menu ();
-
+void Listar(Pessoa *pessoasTemp, int quantPessoas);
 typedef struct {
 	char nome[30];
 	int idade;
@@ -40,12 +40,7 @@ int main()
 			break;
 
 		case 2:
-			for (int i = 0; i < quantPessoas; i++)	{
-				printf("\n\n\tPessoa %d", i+1);
-				printf("\n\tNome %s", pessoas[i].nome);
-				printf("\n\tIdade %d", pessoas[i].idade);
-				printf("\n\tAltura %d", pessoas[i].altura);
-			}
+			Listar(pessoas, quantPessoas);
 			break;
 		
 		default:
@@ -64,4 +59,13 @@ int Menu (){
 	printf ( " \n\t 2 - Listar Pessoas \n" );
 	scanf ( "%d" , &op);
 	return op;
+}
+
+void Listar(Pessoa *pessoasTemp, int quantPessoas){
+	for (int i = 0; i < quantPessoas; i++)	{
+		printf("\n\n\tPessoa %d", i+1);
+		printf("\n\tNome %s", pessoasTemp[i].nome);
+		printf("\n\tIdade %d", pessoasTemp[i].idade);
+		printf("\n\tAltura %d", pessoasTemp[i].altura);
+	}
 }
