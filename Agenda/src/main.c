@@ -6,33 +6,34 @@
 /*
 	NOME: CAROLINE SOUZA CAMARGO
 
-	TRABALHO AGENDA:
-	Nenhuma variável pode ser declarada em todo o programa, somente ponteiros. Todos os dados do programa devem ser guardados dentro do pBuffer.
-	Nem mesmo como parâmetro de função. Só ponteiros que apontam para dentro do pBuffer.
-	Exemplo do que não pode: int c; char a; int v[10];  void Funcao(int parametro)
-	Não pode usar struct em todo o programa.
-	Usar fila ordenada (heap) para armazenar as pessoas em ordem alfabética sempre que o usuário incluir uma nova pessoa.
-	Implementar a base de dados da agenda usando lista duplamente ligada
-	Somente essa base de dados pode ficar fora do buffer principal, ou seja, pode usar um malloc para cada nodo.
+	1. O programa deve armazenar no máximo 10 pessoas
+	2. Todas as variáveis que forem usadas no programa deve ser ponteiros. A única exceção é o item 1 que deve ser uma variável global Pessoa pessoas[10].
+		- Os ponteiros devem apontar para um buffer chamado pBuffer onde os dados devem ser armazenados. Por exemplo, um contador para um for deve ser um ponteiro para int e o int vai ficar armazenado dentro de pBuffer . 
+		- Não pode usar struct dentro do pBuffer 3. 
 */
 
 int Menu(int *opMenu);
+void Inserir(int *quantPessoas);
+void Listar(int *quantPessoas, int *i);
+void Buscar(int *quantPessoas, int *i, char *nomeBusca);
+void Excluir(int *quantPessoas, int *i, int *teste, char *nomeBusca);
+
+typedef struct Pessoa{
+	char *nome;
+	int *idade;
+	char *telefone;
+} Pessoa;
 
 void *pBuffer = NULL;
-
-typedef struct {
-	char nome[30];
-	int idade;
-	char telefone[20];
-} Pessoa;
+Pessoa *pessoas;
 
 int main()
 {
-	//DADOS DO PBUFFER: opMenu QuantidadePessoas i
-	int *opMenu, *quantPessoas, *i;
+	//DADOS DO PBUFFER: opMenu QuantidadePessoas i teste nomeBusca
+	int *opMenu, *quantPessoas, *i, *teste;
+	char *nomeBusca;
 
 	//Alocando espaço para as pessoas da Struct
-	Pessoa *pessoas;
 	pessoas = (Pessoa*)(malloc(sizeof(Pessoa) * 1));
     if (pessoas == NULL){
         printf("Erro na alocacao de memoria");
@@ -40,7 +41,7 @@ int main()
     }
 	
     //Alocando espaço para o ponteiro void
-    pBuffer = (void*)(malloc(sizeof(int) * 3));
+    pBuffer = (void*)(malloc((sizeof(int) * 4) + (sizeof(char) * 11)));
     if (pBuffer == NULL){
         printf("Erro na alocacao de memoria");
         exit (1);
@@ -50,6 +51,8 @@ int main()
     opMenu = pBuffer;
 	quantPessoas = pBuffer + sizeof(int);
 	i = pBuffer + (sizeof(int) * 2);
+	teste = pBuffer + (sizeof(int) * 3);
+	nomeBusca = pBuffer + (sizeof(int) * 4);
 	*opMenu = 0;
 	*quantPessoas = 0;
 
@@ -58,37 +61,26 @@ int main()
 		
         switch (*opMenu) {
         case 1:
-			printf("entrou case 1");
 			*quantPessoas = *quantPessoas + 1;
 			pessoas = (Pessoa*)(realloc(pessoas, sizeof(Pessoa) * (*quantPessoas)));
-
-			fflush(stdin);
-			printf("\n\tDigite o nome: \n");
-			scanf("%s", pessoas[*quantPessoas-1].nome);
-			fflush(stdin);
-			printf("\n\tDigite a idade: \n");
-			scanf("%d", &pessoas[*quantPessoas-1].idade);
-			fflush(stdin);
-			printf("\n\tDigite o telefone: \n");
-			scanf("%s", pessoas[*quantPessoas-1].telefone);
+			if (pessoas == NULL){
+        		printf("Erro na alocacao de memoria");
+        		exit (1);
+    		}
+			Inserir(quantPessoas);
             break;
 
         case 2:
-			printf("entrou case 2");
+			Excluir(quantPessoas, i, teste, nomeBusca);
+			Listar(quantPessoas, i);
             break;
 
         case 3:
-			printf("entrou case 3");
+			Buscar(quantPessoas, i, nomeBusca);
             break;
 
         case 4:
-			printf("entrou case 4");
-			for (*i = 0; *i < *quantPessoas; *i = *i + 1)	{
-				printf("\n\n\tPessoa %d", *i + 1);
-				printf("\n\tNome %s", pessoas[*i].nome);
-				printf("\n\tIdade %d", pessoas[*i].idade);
-				printf("\n\tTelefone %s", pessoas[*i].telefone);
-			}
+			Listar(quantPessoas, i);
             break;
 
         case 5:
@@ -113,6 +105,65 @@ int Menu(int *opMenu) {
     printf("\t4) Listar\n");
     printf("\t5) Sair\n\t");
     scanf("%d", opMenu);
-	printf("%d", *opMenu);
     return *opMenu;
+}
+
+void Inserir(int *quantPessoas){
+	fflush(stdin);
+	pessoas[*quantPessoas-1].nome = malloc(sizeof(char)*15);
+	pessoas[*quantPessoas-1].idade = malloc(sizeof(int));
+	pessoas[*quantPessoas-1].telefone = malloc(sizeof(char)*15);
+
+	printf("\n\tDigite o nome: \n");
+	scanf("%s", pessoas[*quantPessoas-1].nome);
+	fflush(stdin);
+	printf("\n\tDigite a idade: \n");
+	scanf("%d", &pessoas[*quantPessoas-1].idade);
+	fflush(stdin);
+	printf("\n\tDigite o telefone: \n");
+	scanf("%s", pessoas[*quantPessoas-1].telefone);
+}
+
+void Listar(int *quantPessoas, int *i){
+	for (*i = 0; *i < *quantPessoas; *i = *i + 1)	{
+		printf("\n\n\tPessoa %d", *i + 1);
+		printf("\n\tNome %s", pessoas[*i].nome);
+		printf("\n\tIdade %d", pessoas[*i].idade);
+		printf("\n\tTelefone %s", pessoas[*i].telefone);
+	}
+}
+
+void Buscar(int *quantPessoas, int *i, char *nomeBusca){
+    scanf ("%s" , nomeBusca);
+	printf("%s", nomeBusca);
+	for (*i = 0; *i < *quantPessoas; *i = *i + 1)	{
+		if (strcmp(nomeBusca, pessoas[*i].nome) == 0) {
+			printf("\n\tPessoa encontrada");
+			printf("\n\n\tPessoa %d", *i + 1);
+			printf("\n\tNome %s", pessoas[*i].nome);
+			printf("\n\tIdade %d", pessoas[*i].idade);
+			printf("\n\tTelefone %s", pessoas[*i].telefone);
+		}
+	}
+}
+
+void Excluir(int *quantPessoas, int *i, int *teste, char *nomeBusca){ 
+    printf("\nDigite a pessoa que deseja remover: \t");
+	scanf ("%s" , nomeBusca);
+	for (*i = 0; *i < *quantPessoas; *i = *i + 1)	{
+		if (strcmp(nomeBusca, pessoas[*i].nome) == 0) {
+			*teste = 1;
+		}
+		if (*teste == 1 && ((*i + 1) != *quantPessoas)) {
+			strcpy(pessoas[*i].nome, pessoas[*i + 1].nome);
+			pessoas[*i].idade = pessoas[*i + 1].idade;
+			strcpy(pessoas[*i].telefone, pessoas[*i + 1].telefone);
+		}
+	}
+	if (*teste == 1) {
+		*quantPessoas = *quantPessoas - 1;
+		printf("\nPessoa excluida com sucesso");
+	} else{
+		printf("\nPessoa nao encontrada");
+	}
 }
