@@ -13,10 +13,13 @@
 */
 
 int Menu(int *opMenu);
+void NewElement(char *nome, int *idade, char *telefone);
+/*
 void Inserir(int *quantPessoas);
 void Listar(int *quantPessoas, int *i);
 void Buscar(int *quantPessoas, int *i, char *nomeBusca);
 void Excluir(int *quantPessoas, int *i, int *teste, char *nomeBusca);
+*/
 
 typedef struct Pessoa{
 	char *nome;
@@ -25,62 +28,67 @@ typedef struct Pessoa{
 } Pessoa;
 
 void *pBuffer = NULL;
+const int TAMANHOBASE = (sizeof(char)*10 + 1) + sizeof(int) + (sizeof(char)*10 + 1);
 Pessoa *pessoas;
 
 int main()
 {
-	//DADOS DO PBUFFER: opMenu QuantidadePessoas i teste nomeBusca
-	int *opMenu, *quantPessoas, *i, *teste;
-	char *nomeBusca;
+	//ORDEM DOS DADOS NO PBUFFER: opMenu QuantidadePessoas i teste nomeBusca tempNome tempIdade tempTelefone
+	int *opMenu = NULL, *quantPessoas = NULL, *i = NULL, *teste = NULL, *tempIdade;
+	char *nomeBusca = NULL, *tempNome  = NULL, *tempTelefone = NULL;
 
-	//Alocando espaço para as pessoas da Struct
-	pessoas = (Pessoa*)(malloc(sizeof(Pessoa) * 1));
-    if (pessoas == NULL){
-        printf("Erro na alocacao de memoria");
-        exit (1);
-    }
-	
-    //Alocando espaço para o ponteiro void
-    pBuffer = (void*)(malloc((sizeof(int) * 4) + (sizeof(char) * 11)));
+    //Alocando espaço para o ponteiro void com as váriaveis gerais
+    pBuffer = (void*)(malloc((sizeof(int) * 5) + ((sizeof(char) * 10) * 3 + 3)));
     if (pBuffer == NULL){
         printf("Erro na alocacao de memoria");
         exit (1);
     }
 
-    //Definindo endereço incial para os ponteiros
+    //Definindo endereço incial para os ponteiros do pbuffer
     opMenu = pBuffer;
 	quantPessoas = pBuffer + sizeof(int);
 	i = pBuffer + (sizeof(int) * 2);
 	teste = pBuffer + (sizeof(int) * 3);
 	nomeBusca = pBuffer + (sizeof(int) * 4);
+	tempNome = pBuffer + (sizeof(int) * 4) + (sizeof(char) * 10 + 1);
+	tempIdade = pBuffer + (sizeof(int) * 4) + ((sizeof(char) * 10) * 2 + 2);
+	tempTelefone = pBuffer + (sizeof(int) * 5) + ((sizeof(char) * 10) * 2 + 2);
 	*opMenu = 0;
 	*quantPessoas = 0;
 
     while (*opMenu != 5) {
         *opMenu = Menu(opMenu);
-		
         switch (*opMenu) {
         case 1:
 			*quantPessoas = *quantPessoas + 1;
-			pessoas = (Pessoa*)(realloc(pessoas, sizeof(Pessoa) * (*quantPessoas)));
-			if (pessoas == NULL){
-        		printf("Erro na alocacao de memoria");
-        		exit (1);
-    		}
-			Inserir(quantPessoas);
+			
+			printf("\n\tDigite o nome: \n");
+			scanf("%s", tempNome);
+			fflush(stdin);
+			printf("\n\tDigite a idade: \n");
+			scanf("%d", tempIdade);
+			fflush(stdin);
+			printf("\n\tDigite o telefone: \n");
+			scanf("%s", tempTelefone);
+
+			printf("%s, %d, %s", tempNome, *tempIdade, tempTelefone);
+			
+			NewElement(tempNome, tempIdade, tempTelefone);
+			
+			//Inserir(quantPessoas);
             break;
 
         case 2:
-			Excluir(quantPessoas, i, teste, nomeBusca);
-			Listar(quantPessoas, i);
+			//Excluir(quantPessoas, i, teste, nomeBusca);
+			//Listar(quantPessoas, i);
             break;
 
         case 3:
-			Buscar(quantPessoas, i, nomeBusca);
+			//Buscar(quantPessoas, i, nomeBusca);
             break;
 
         case 4:
-			Listar(quantPessoas, i);
+			//Listar(quantPessoas, i);
             break;
 
         case 5:
@@ -108,12 +116,26 @@ int Menu(int *opMenu) {
     return *opMenu;
 }
 
+void NewElement(char *nome, int *idade, char *telefone){
+	void *pBufferPessoas = NULL;
+	
+	pBufferPessoas = (void*)(malloc(TAMANHOBASE));
+	if (pBufferPessoas == NULL){
+        printf("Erro na alocacao de memoria");
+        exit (1);
+    }
+
+	strcpy((char*)(pBufferPessoas), nome);
+	*(int*)(pBufferPessoas + (sizeof(char) * 10 + 1)) = *idade;
+	strcpy((char*)(pBufferPessoas + (sizeof(char) * 10 + 1) + sizeof(int)), telefone);
+
+	printf("\n PBUFFERNOMES: %s, %d, %s", (char*)(pBufferPessoas), *(int *)(pBufferPessoas + (sizeof(char) * 10 + 1)), (char*)(pBufferPessoas + (sizeof(char) * 10 + 1) + sizeof(int)));
+}
+
+/*
 void Inserir(int *quantPessoas){
 	fflush(stdin);
-	pessoas[*quantPessoas-1].nome = malloc(sizeof(char)*15);
-	pessoas[*quantPessoas-1].idade = malloc(sizeof(int));
-	pessoas[*quantPessoas-1].telefone = malloc(sizeof(char)*15);
-
+	
 	printf("\n\tDigite o nome: \n");
 	scanf("%s", pessoas[*quantPessoas-1].nome);
 	fflush(stdin);
@@ -167,3 +189,4 @@ void Excluir(int *quantPessoas, int *i, int *teste, char *nomeBusca){
 		printf("\nPessoa nao encontrada");
 	}
 }
+*/
