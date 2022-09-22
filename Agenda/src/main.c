@@ -13,7 +13,10 @@
 */
 
 int Menu(int *opMenu);
-void NewElement(char *nome, int *idade, char *telefone);
+char* NewElement(char *nome, int *idade, char *telefone);
+void Insert(char **tracer, char *newp);
+void Print(char **tracer);
+
 /*
 void Inserir(int *quantPessoas);
 void Listar(int *quantPessoas, int *i);
@@ -21,24 +24,20 @@ void Buscar(int *quantPessoas, int *i, char *nomeBusca);
 void Excluir(int *quantPessoas, int *i, int *teste, char *nomeBusca);
 */
 
-typedef struct Pessoa{
-	char *nome;
-	int *idade;
-	char *telefone;
-} Pessoa;
-
 void *pBuffer = NULL;
-const int TAMANHOBASE = (sizeof(char)*10 + 1) + sizeof(int) + (sizeof(char)*10 + 1);
-Pessoa *pessoas;
+const int TAMANHONOME = sizeof(char) * 15 + 1; 
+const int TAMANHOIDADE = sizeof(int);
+const int TAMANHOTELEFONE = sizeof(char) * 20; // (55) 51 9 9999-9999
+const int TAMANHOBASE = TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char);
 
 int main()
 {
-	//ORDEM DOS DADOS NO PBUFFER: opMenu QuantidadePessoas i teste nomeBusca tempNome tempIdade tempTelefone
-	int *opMenu = NULL, *quantPessoas = NULL, *i = NULL, *teste = NULL, *tempIdade;
-	char *nomeBusca = NULL, *tempNome  = NULL, *tempTelefone = NULL;
+	//ORDEM DOS DADOS NO PBUFFER: opMenu QuantidadePessoas i teste nomeBusca tempNome tempIdade tempTelefone start
+	int *opMenu = NULL, *quantPessoas = NULL, *i = NULL, *teste = NULL, *tempIdade = NULL;
+	char *nomeBusca = NULL, *tempNome  = NULL, *tempTelefone = NULL, *start = NULL;
 
     //Alocando espaço para o ponteiro void com as váriaveis gerais
-    pBuffer = (void*)(malloc((sizeof(int) * 5) + ((sizeof(char) * 10) * 3 + 3)));
+    pBuffer = (void*)(malloc((sizeof(int) * 5) + ((sizeof(char) * 10) * 3 + 3) + sizeof(char)));
     if (pBuffer == NULL){
         printf("Erro na alocacao de memoria");
         exit (1);
@@ -53,6 +52,7 @@ int main()
 	tempNome = pBuffer + (sizeof(int) * 4) + (sizeof(char) * 10 + 1);
 	tempIdade = pBuffer + (sizeof(int) * 4) + ((sizeof(char) * 10) * 2 + 2);
 	tempTelefone = pBuffer + (sizeof(int) * 5) + ((sizeof(char) * 10) * 2 + 2);
+	//start = pBuffer + (sizeof(int) * 5) + ((sizeof(char) * 10) * 3 + 2);
 	*opMenu = 0;
 	*quantPessoas = 0;
 
@@ -71,10 +71,15 @@ int main()
 			printf("\n\tDigite o telefone: \n");
 			scanf("%s", tempTelefone);
 
-			printf("%s, %d, %s", tempNome, *tempIdade, tempTelefone);
+			//printf("%s, %d, %s", tempNome, *tempIdade, tempTelefone);
 			
-			NewElement(tempNome, tempIdade, tempTelefone);
+			Insert(&start, NewElement(tempNome, tempIdade, tempTelefone));
+			Print(&start);
+
+			//start = NewElement(tempNome, tempIdade, tempTelefone);
 			
+			//printf("\n%p", start);
+			//printf("\n PBUFFERNOMES: %s, %d, %s", (char*)(start), *(int *)(start + TAMANHONOME), (char*)(start + TAMANHONOME + TAMANHOIDADE));
 			//Inserir(quantPessoas);
             break;
 
@@ -88,6 +93,7 @@ int main()
             break;
 
         case 4:
+			Print(&start);
 			//Listar(quantPessoas, i);
             break;
 
@@ -116,7 +122,7 @@ int Menu(int *opMenu) {
     return *opMenu;
 }
 
-void NewElement(char *nome, int *idade, char *telefone){
+char* NewElement(char *nome, int *idade, char *telefone){
 	void *pBufferPessoas = NULL;
 	
 	pBufferPessoas = (void*)(malloc(TAMANHOBASE));
@@ -126,10 +132,37 @@ void NewElement(char *nome, int *idade, char *telefone){
     }
 
 	strcpy((char*)(pBufferPessoas), nome);
-	*(int*)(pBufferPessoas + (sizeof(char) * 10 + 1)) = *idade;
-	strcpy((char*)(pBufferPessoas + (sizeof(char) * 10 + 1) + sizeof(int)), telefone);
+	*(int*)(pBufferPessoas + TAMANHONOME) = *idade;
+	strcpy((char*)(pBufferPessoas + TAMANHONOME + TAMANHOIDADE), telefone);
+	*(char **)(pBufferPessoas + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE) = NULL;
 
-	printf("\n PBUFFERNOMES: %s, %d, %s", (char*)(pBufferPessoas), *(int *)(pBufferPessoas + (sizeof(char) * 10 + 1)), (char*)(pBufferPessoas + (sizeof(char) * 10 + 1) + sizeof(int)));
+	//printf("\n PBUFFERNOMES: %s, %d, %s", (char*)(pBufferPessoas), *(int *)(pBufferPessoas + TAMANHONOME), (char*)(pBufferPessoas + TAMANHONOME + TAMANHOIDADE));
+
+	//printf("\n%p", pBufferPessoas);
+	return pBufferPessoas;
+}
+
+void Insert(char **head, char *newp){
+	char **tracer = head;
+	//printf("\n PBUFFERNOMES: %s, %d, %s", (char **)(*tracer), *(int **)(*tracer + TAMANHONOME), (char **)(*tracer + TAMANHONOME + TAMANHOIDADE));
+
+	while (*tracer != NULL && strcmp((char **)(*tracer), (char *)(newp)) < 1) {
+		tracer = *tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE;
+	}
+
+	*(char **)(newp + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE) = *tracer;
+	*tracer = newp;
+	
+}
+
+void Print(char **tracer){
+	printf("\n\n---LISTA DOS NOMES ADICIONADOS---");
+	while (*tracer) {
+		printf("\n\n\tNOME: %s", (char **)(*tracer));
+		printf("\n\tIDADE: %d", *(char **)(*tracer + TAMANHONOME));
+		printf("\n\tTELEFONE: %s", (char **)(*tracer + TAMANHONOME + TAMANHOIDADE));
+		tracer = *tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE;
+	}	
 }
 
 /*
