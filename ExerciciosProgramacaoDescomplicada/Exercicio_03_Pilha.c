@@ -22,7 +22,7 @@ Pilha* Reset ();
 void Push(int num, Pilha *minhaPilha);
 int Pop(Pilha *minhaPilha);
 void Clear(Pilha *minhaPilha);
-
+void Print(Pilha *minhaPilha);
 int main()
 {
     Pilha *minhaPilha;
@@ -31,11 +31,13 @@ int main()
     Push(3, minhaPilha);
     Push(4, minhaPilha);
     Push(2, minhaPilha);
+
+    Print(minhaPilha);
     
-    printf("\n%d", Pop(minhaPilha));
-    printf("\n%d", Pop(minhaPilha));
-    printf("\n%d", Pop(minhaPilha));
-    printf("\n%d", Pop(minhaPilha));
+    printf("\n\nElementos retirados: \n %d", Pop(minhaPilha));
+    printf("\n %d", Pop(minhaPilha));
+    printf("\n %d", Pop(minhaPilha));
+    printf("\n %d", Pop(minhaPilha));
     
 }
 
@@ -74,4 +76,11 @@ int Pop(Pilha *minhaPilha){
 
 void Clear(Pilha *minhaPilha){
     free(minhaPilha);
+}
+
+void Print(Pilha *minhaPilha){
+    printf("\n Pilha: ");
+    for (int i = minhaPilha->topo; i > minhaPilha->base; i--) {
+        printf("\n - %d", minhaPilha->elemento[i-1]);
+    }   
 }
