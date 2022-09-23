@@ -17,6 +17,7 @@ typedef struct{
 }Fila;
 
 
+
 //Escopo de funções
 Fila* Reset ();
 void Push(int num, Fila *minhaFila);
