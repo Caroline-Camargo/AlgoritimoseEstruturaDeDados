@@ -8,7 +8,7 @@
 
 	1. O programa deve armazenar no máximo 10 pessoas
 	2. Todas as variáveis que forem usadas no programa deve ser ponteiros. A única exceção é o item 1 que deve ser uma variável global Pessoa pessoas[10].
-		- Os ponteiros devem apontar para um buffer chamado pBuffer onde os dados devem ser armazenados. Por exemplo, um contador para um for deve ser um ponteiro para int e o int vai ficar armazenado dentro de pBuffer . 
+		- Os ponteiros devem apontar para um buffer chamado pBuffer onde os dados devem ser armazenados. Por exemplo, um contador para um for deve ser um ponteiro para int e o int vai ficar armazenado dentro de pBuffer. 
 		- Não pode usar struct dentro do pBuffer 3. 
 */
 
@@ -33,7 +33,7 @@ char *last = NULL;
 const int TAMANHONOME = sizeof(char) * 15 + 1; 
 const int TAMANHOIDADE = sizeof(int);
 const int TAMANHOTELEFONE = sizeof(char) * 20 + 1; // (55) 51 9 9999-9999
-const int TAMANHOBASE = TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char) * 15 + 1 + sizeof(char) * 20 + 1;
+const int TAMANHOBASE = TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char **) + sizeof(char **);
 
 int main()
 {
@@ -96,6 +96,7 @@ int main()
             break;
 
         case 5:
+			Reset(&start);
             free(pBuffer);
             printf("\nOpcao sair foi escolhida...\n");
 			return (0);
@@ -132,7 +133,7 @@ char* NewElement(char *nome, int *idade, char *telefone){
 	*(int*)(pBufferPessoas + TAMANHONOME) = *idade; //idade
 	strcpy((char*)(pBufferPessoas + TAMANHONOME + TAMANHOIDADE), telefone); //telefone
 	*(char **)(pBufferPessoas + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE) = NULL; //next
-	*(char **)(pBufferPessoas + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char) * 15 + 1) = NULL; //previous
+	*(char **)(pBufferPessoas + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char **)) = NULL; //previous
 
 	return pBufferPessoas;
 }
@@ -158,7 +159,7 @@ void UpdatePrevious (char **head, char *last){
 		tracerPrevious = *tracer; //Memoriza o endereço anterior 
 		tracer = (char **)(*tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE);  //Vai para o próximo endereço da lista
 		if (*tracer != NULL) { 
-			*(char **)(*tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char) * 15 + 1) = (char *) (tracerPrevious);
+			*(char **)(*tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char **)) = (char *) (tracerPrevious);
 		}
 	}
 
@@ -204,7 +205,7 @@ void Search(char **tracer, char *text){
 		printf("\n\tIdade: %d", *(int **)(*tracer + TAMANHONOME));
 		printf("\n\tTelefone: %s", (char **)(*tracer + TAMANHONOME + TAMANHOIDADE));
 
-		temp = (char **)(*tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char) * 15 + 1);
+		temp = (char **)(*tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE + sizeof(char **));
 		printf("\n\n\tNome anterior na lista: %s", (char **)(*temp));
 		temp = (char **)(*tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE);
 		printf("\n\tProximo nome da lista: %s", (char **)(*temp));
@@ -214,13 +215,13 @@ void Search(char **tracer, char *text){
 }
 
 void Reset(char **head){
-	/*char **tracer = head;
+	char **tracer = head;
 	void **old;
 	while (*tracer != NULL) {
 		old = *tracer;
 		*tracer = (char **)(*tracer + TAMANHONOME + TAMANHOIDADE + TAMANHOTELEFONE);
 		free(*old);
-	} */
+	} 
 }
 
 /*
