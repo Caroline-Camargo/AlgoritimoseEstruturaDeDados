@@ -258,32 +258,8 @@ void Pop(Arvore **raizTemp, char procura[]){
     }
 }
 
-int FatorBalanceamento(Arvore *raizTemp){
-    if (raizTemp) {
-        return 0;
-    } else {
-        return Altura(raizTemp->esquerda) - Altura(raizTemp->direita);
-    }  
-}
 
-int Altura(Arvore *arvore){
-	int iEsq, iDir;
 
-	if (arvore == NULL){
-		return 0;
-	}
-
-	iEsq = Altura(arvore->esquerda);
-	iDir = Altura(arvore->direita);
-
-	if (iEsq > iDir){
-		return iEsq + 1;
-	} else {
-		return iDir + 1;
-	}
-}
-
-//Remove elementos da Arvore
 
 
 //Exclui a Arvore
