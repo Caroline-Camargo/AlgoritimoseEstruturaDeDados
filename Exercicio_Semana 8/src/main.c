@@ -18,17 +18,19 @@ typedef struct _Arvore{
 } Arvore;
 
 Arvore *raiz = NULL;
+char tipoChave[10];
 int numNodos = 0;
 
 //Protótipos das Funções
 Arvore* CriaNodo(char nome[],  int idade, char telefone[], int fator);
 void Reset();
 void Push(Arvore **raiz, Arvore *newp);
-char Pop(Arvore *Arvore);
 void Clear(Arvore *Arvore);
 void PrintArvorePreOrdem(Arvore *arvore);
 void PrintArvoreCentral(Arvore *arvore);
 void PrintArvorePosOrdem(Arvore *arvore);
+void Find(Arvore **raizTemp, char procura[]);
+void Pop(Arvore **raizTemp, char procura[]);
 int Menu();
 int MenuFatorPrecendencia();
 
@@ -58,9 +60,16 @@ int main(){
             break;
 
         case 2:
+            printf("\n\nDIGITE O/A %s QUE DESEJA REMOVER\n", tipoChave);
+            fflush(stdin);
+            scanf("%s", &tempChar);
             break;
 
         case 3:
+            printf("\n\nDIGITE O/A %s QUE DESEJA BUSCAR\n", tipoChave);
+            fflush(stdin);
+            scanf("%s", &tempChar);
+            Find(&raiz, tempChar);
             break;
 
         case 4:
@@ -188,13 +197,94 @@ void PrintArvorePosOrdem(Arvore *arvore){
 	}
 }
 
-//Remove elementos da Arvore
-char Pop(Arvore *arvore){
-	
-	char temp;
-    
-	return temp;
+// Procura um elemento na árvore (de acordo com a chave escolhida no inicio do código)
+void Find(Arvore **raizTemp, char procura[]){
+    Arvore **tracer = raizTemp;
+    if (*raizTemp == NULL) {    //Caso a arvore não tenha nenhum nodo ainda
+        printf("\nNão existe nenhum nodo na árvore");
+    } else {
+        while (*tracer){
+            if (strcmp(procura, (*tracer)->chave) == 0) {  
+                printf ("\nNodo encontrado!");
+                printf ("\n\tNome: %s", (*tracer)->nome);
+                printf ("\n\tIdade: %d", (*tracer)->idade);
+                printf ("\n\tTelefone: %s", (*tracer)->telefone);
+                break;
+            } else if (strcmp(procura, (*tracer)->chave) > 0) {    //busca na direita
+                if ((*tracer)->direita != NULL) {
+                    tracer = &(*tracer)->direita;
+                } else {    
+                    printf ("\nNodo nao encontrado!");
+                    break;
+                }  
+            } else {    //busca na esquerda
+                if ((*tracer)->esquerda != NULL) {
+                    tracer = &(*tracer)->esquerda;
+                } else {
+                    printf ("\nNodo nao encontrado!");
+                    break;
+                }
+            }
+        }
+    }
 }
+
+void Pop(Arvore **raizTemp, char procura[]){
+    Arvore **tracer = raizTemp;
+    if (*raizTemp == NULL) {    //Caso a arvore não tenha nenhum nodo ainda
+        printf("\nNão existe nenhum nodo na árvore para ser removido");
+    } else {
+        while (*tracer){
+            if (strcmp(procura, (*tracer)->chave) == 0) {  
+                printf ("\nNodo encontrado!");
+                
+                break;
+            } else if (strcmp(procura, (*tracer)->chave) > 0) {    //busca na direita
+                if ((*tracer)->direita != NULL) {
+                    tracer = &(*tracer)->direita;
+                } else {    
+                    printf ("\nNodo nao encontrado!");
+                    break;
+                }  
+            } else {    //busca na esquerda
+                if ((*tracer)->esquerda != NULL) {
+                    tracer = &(*tracer)->esquerda;
+                } else {
+                    printf ("\nNodo nao encontrado!");
+                    break;
+                }
+            }
+        }
+    }
+}
+
+int FatorBalanceamento(Arvore *raizTemp){
+    if (raizTemp) {
+        return 0;
+    } else {
+        return Altura(raizTemp->esquerda) - Altura(raizTemp->direita);
+    }  
+}
+
+int Altura(Arvore *arvore){
+	int iEsq, iDir;
+
+	if (arvore == NULL){
+		return 0;
+	}
+
+	iEsq = Altura(arvore->esquerda);
+	iDir = Altura(arvore->direita);
+
+	if (iEsq > iDir){
+		return iEsq + 1;
+	} else {
+		return iDir + 1;
+	}
+}
+
+//Remove elementos da Arvore
+
 
 //Exclui a Arvore
 void Clear(Arvore *Arvore){
@@ -220,6 +310,15 @@ int MenuFatorPrecendencia() {
     printf("\t2) Idade\n");
     printf("\t3) Telefone\n");
     scanf("%d", &opMenu);
+
+    if (opMenu == 1) {
+        strcpy(tipoChave, "NOME");
+    } else if (opMenu == 2) {
+        strcpy(tipoChave, "IDADE");
+    } else {
+       strcpy(tipoChave, "TELEFONE");
+    }
+
     return opMenu;
 }
 /*
