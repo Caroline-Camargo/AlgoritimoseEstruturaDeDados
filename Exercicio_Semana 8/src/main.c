@@ -17,13 +17,16 @@ typedef struct _Arvore{
 	struct _Arvore *direita;
 } Arvore;
 
-Arvore *raiz = NULL;
-char tipoChave[10];
-int numNodos = 0;
+typedef struct _InfoArvore{
+    Arvore *raiz;
+    char tipoChave[10];
+    int numNodos;
+} InfoArvore;
+
 
 //Protótipos das Funções
 Arvore* CriaNodo(char nome[],  int idade, char telefone[], int fator);
-void Reset();
+InfoArvore* Reset();
 void Push(Arvore **raiz, Arvore *newp);
 void Clear(Arvore *Arvore);
 void PrintArvorePreOrdem(Arvore *arvore);
@@ -32,14 +35,22 @@ void PrintArvorePosOrdem(Arvore *arvore);
 void Find(Arvore **raizTemp, char procura[]);
 void Pop(Arvore **raizTemp, char procura[]);
 int Menu();
-int MenuFatorPrecendencia();
+int MenuFatorPrecendencia(InfoArvore *info);
 
 int main(){
-    Arvore *arvore;
     int tempInt;
     char tempChar[20], tempChar2[20];
+    int opMenu = 0, fatorPrecendencia = 0; 
 
-    int opMenu = 0, fatorPrecendencia = MenuFatorPrecendencia(); 
+    InfoArvore *arvore = Reset();
+
+    while (fatorPrecendencia < 1 || fatorPrecendencia > 3) {
+        fatorPrecendencia = MenuFatorPrecendencia(arvore); 
+        if (fatorPrecendencia < 1 || fatorPrecendencia > 3) {
+            printf("\nDigite um numero valido");
+        }
+    }
+
     while (opMenu != 5) {
         opMenu = Menu();
         switch (opMenu) {
@@ -55,40 +66,33 @@ int main(){
             printf("\nDigite o telefone: ");
             fflush(stdin);
             scanf("%s", tempChar2);
-            arvore = CriaNodo(tempChar, tempInt, tempChar2, fatorPrecendencia);
-            Push(&raiz, arvore);
+            Arvore *arvoreN = CriaNodo(tempChar, tempInt, tempChar2, fatorPrecendencia);
+            Push(&(arvore->raiz), arvoreN);
             break;
 
         case 2:
-            printf("\n\nDIGITE O/A %s QUE DESEJA REMOVER\n", tipoChave);
+            printf("\n\nDIGITE O/A %s QUE DESEJA REMOVER\n", arvore->tipoChave);
             fflush(stdin);
             scanf("%s", &tempChar);
             break;
 
         case 3:
-            printf("\n\nDIGITE O/A %s QUE DESEJA BUSCAR\n", tipoChave);
+            printf("\n\nDIGITE O/A %s QUE DESEJA BUSCAR\n", arvore->tipoChave);
             fflush(stdin);
             scanf("%s", &tempChar);
-            Find(&raiz, tempChar);
+            Find(&(arvore->raiz), tempChar);
             break;
 
         case 4:
-            printf("\n\nDIGITE A FORMA COMO DESEJA LISTAR A ARVORE\n");
-            printf("\t1) Central\n");
-            printf("\t2) Pre Ordem\n");
-            printf("\t3) Pos Ordem\n");
-            fflush(stdin);
-            scanf("%d", &tempInt);
+            printf("\n\nIMPRESSAO DA ARVORE\n");
+            printf("\t1) Central:\n\t");
+            PrintArvoreCentral(arvore->raiz);
             
-            if (tempInt == 1) {
-                PrintArvoreCentral(raiz);
-            } else if (tempInt == 2) {
-                PrintArvorePreOrdem(raiz);
-            } else if (tempInt == 3) {
-                PrintArvorePosOrdem(raiz);
-            } else {
-                printf("\n\nATENCAO: Digite um numero valido!\n");
-            }
+            printf("\n\n\t2) Pre Ordem\n\t");
+            PrintArvorePreOrdem(arvore->raiz);
+
+            printf("\n\n\t3) Pos Ordem\n\t");
+            PrintArvorePosOrdem(arvore->raiz);
     
         case 5:
             //SAIR
@@ -100,6 +104,14 @@ int main(){
             break;
         }
     }
+}
+
+InfoArvore* Reset(){
+    InfoArvore *arvore = (InfoArvore *)(malloc(sizeof(InfoArvore)));
+    arvore->raiz = NULL;
+    arvore->numNodos = 0;
+    strcpy(arvore->tipoChave, "");
+    return arvore;
 }
 
 //Inicializa a Arvore
@@ -175,7 +187,7 @@ void Push(Arvore **raizTemp, Arvore *newp){
 //Mostra os elementos da Arvore
 void PrintArvorePreOrdem(Arvore *arvore){
 	if (arvore){
-		printf("%s ", arvore->chave);
+		printf("   %s  |", arvore->chave);
 		PrintArvorePreOrdem(arvore->esquerda);
 		PrintArvorePreOrdem(arvore->direita);
 	}
@@ -184,7 +196,7 @@ void PrintArvorePreOrdem(Arvore *arvore){
 void PrintArvoreCentral(Arvore *arvore){
     if (arvore){
 		PrintArvoreCentral(arvore->esquerda);
-        printf("%s ", arvore->chave);
+        printf("   %s  |", arvore->chave);
 		PrintArvoreCentral(arvore->direita);
 	}
 }
@@ -193,7 +205,7 @@ void PrintArvorePosOrdem(Arvore *arvore){
     if (arvore){
 		PrintArvorePosOrdem(arvore->esquerda);
 		PrintArvorePosOrdem(arvore->direita);
-        printf("%s ", arvore->chave);
+        printf("   %s  |", arvore->chave);
 	}
 }
 
@@ -201,7 +213,7 @@ void PrintArvorePosOrdem(Arvore *arvore){
 void Find(Arvore **raizTemp, char procura[]){
     Arvore **tracer = raizTemp;
     if (*raizTemp == NULL) {    //Caso a arvore não tenha nenhum nodo ainda
-        printf("\nNão existe nenhum nodo na árvore");
+        printf("\nNao existe nenhum nodo na arvore");
     } else {
         while (*tracer){
             if (strcmp(procura, (*tracer)->chave) == 0) {  
@@ -258,8 +270,32 @@ void Pop(Arvore **raizTemp, char procura[]){
     }
 }
 
+int FatorBalanceamento(Arvore *raizTemp){
+    if (raizTemp) {
+        return 0;
+    } else {
+        return Altura(raizTemp->esquerda) - Altura(raizTemp->direita);
+    }  
+}
 
+int Altura(Arvore *arvore){
+	int iEsq, iDir;
 
+	if (arvore == NULL){
+		return 0;
+	}
+
+	iEsq = Altura(arvore->esquerda);
+	iDir = Altura(arvore->direita);
+
+	if (iEsq > iDir){
+		return iEsq + 1;
+	} else {
+		return iDir + 1;
+	}
+}
+
+//Remove elementos da Arvore
 
 
 //Exclui a Arvore
@@ -279,7 +315,7 @@ int Menu() {
     return opMenu;
 }
 
-int MenuFatorPrecendencia() {
+int MenuFatorPrecendencia(InfoArvore *info) {
     int opMenu;
     printf("\n\nESCOLHA UM FATOR DE PRECEDENCIA\n");
     printf("\t1) Nome\n");
@@ -288,11 +324,11 @@ int MenuFatorPrecendencia() {
     scanf("%d", &opMenu);
 
     if (opMenu == 1) {
-        strcpy(tipoChave, "NOME");
+        strcpy(info->tipoChave, "NOME");
     } else if (opMenu == 2) {
-        strcpy(tipoChave, "IDADE");
+        strcpy(info->tipoChave, "IDADE");
     } else {
-       strcpy(tipoChave, "TELEFONE");
+       strcpy(info->tipoChave, "TELEFONE");
     }
 
     return opMenu;
