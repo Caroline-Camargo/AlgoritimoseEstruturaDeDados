@@ -74,6 +74,7 @@ int main(){
             printf("\n\nDIGITE O/A %s QUE DESEJA REMOVER\n", arvore->tipoChave);
             fflush(stdin);
             scanf("%s", &tempChar);
+            Pop(&(arvore->raiz), tempChar);
             break;
 
         case 3:
@@ -243,16 +244,89 @@ void Find(Arvore **raizTemp, char procura[]){
 
 void Pop(Arvore **raizTemp, char procura[]){
     Arvore **tracer = raizTemp;
+    Arvore *pai;
+    int direcao = -1;
     if (*raizTemp == NULL) {    //Caso a arvore não tenha nenhum nodo ainda
-        printf("\nNão existe nenhum nodo na árvore para ser removido");
+        printf("\nNao existe nenhum nodo na arvore para ser removido");
     } else {
         while (*tracer){
             if (strcmp(procura, (*tracer)->chave) == 0) {  
-                printf ("\nNodo encontrado!");
-                
+                if ((*tracer)->direita == NULL && (*tracer)->esquerda == NULL){  //Removendo nó folha
+                    printf ("\nCaso de remocao: No folha");
+                    free((*tracer)->chave); 
+                    free((*tracer)->nome);
+                    free((*tracer)->telefone);  
+                    free((*tracer)); 
+
+                    if (direcao == 0) {
+                        pai->esquerda = NULL;
+                    } else if ((direcao == 1)) {
+                        pai->direita = NULL;
+                    } else {
+                        printf ("\nO ultimo nodo da arvore foi removido");
+                        *raizTemp = NULL;
+                    }
+
+                } else if ((*tracer)->direita != NULL && (*tracer)->esquerda != NULL) { // Removendo nó com 2 filhos
+                    printf ("\nCaso de remocao: No com dois filhos");
+                    Arvore *temp = (*tracer)->esquerda;
+
+                    while (temp != NULL) {
+                        if (temp->direita != NULL) {
+                            temp = temp->direita;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    if (direcao == 0) {
+                        pai->esquerda = temp;
+                    } else if ((direcao == 1)) {
+                        pai->direita = temp;
+                    } else {
+                        printf ("\nO ultimo nodo da arvore foi removido");
+                        *raizTemp = NULL;
+                    }
+
+                    temp->direita = (*tracer)->direita;
+                    temp->esquerda = (*tracer)->esquerda;     
+
+                    free((*tracer)->chave); 
+                    free((*tracer)->nome);
+                    free((*tracer)->telefone);  
+                    free((*tracer));    
+
+                    // vai para esquerda e vai até encontrar um null para direita
+                    
+
+                } else { // Removendo nó com 1 filho
+                   printf ("\nCaso de remocao: No com 1 filho");
+                    Arvore *temp;
+                    if ((*tracer)->direita != NULL) { 
+                        temp = (*tracer)->direita;
+                    } else {
+                        temp = (*tracer)->esquerda;
+                    } 
+
+                    free((*tracer)->chave); 
+                    free((*tracer)->nome);
+                    free((*tracer)->telefone);  
+                    free((*tracer)); 
+
+                    if (direcao == 0) {
+                        pai->esquerda = temp;
+                    } else if ((direcao == 1)) {
+                        pai->direita = temp;
+                    } else {
+                        printf ("\nO primeiro nodo da arvore foi removido");
+                        *raizTemp = temp;
+                    }
+                }             
                 break;
             } else if (strcmp(procura, (*tracer)->chave) > 0) {    //busca na direita
                 if ((*tracer)->direita != NULL) {
+                    pai = *tracer;
+                    direcao = 1;
                     tracer = &(*tracer)->direita;
                 } else {    
                     printf ("\nNodo nao encontrado!");
@@ -260,6 +334,8 @@ void Pop(Arvore **raizTemp, char procura[]){
                 }  
             } else {    //busca na esquerda
                 if ((*tracer)->esquerda != NULL) {
+                    pai = *tracer;
+                    direcao = 0;
                     tracer = &(*tracer)->esquerda;
                 } else {
                     printf ("\nNodo nao encontrado!");
