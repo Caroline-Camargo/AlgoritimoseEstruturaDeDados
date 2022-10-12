@@ -269,36 +269,22 @@ void Pop(Arvore **raizTemp, char procura[]){
 
                 } else if ((*tracer)->direita != NULL && (*tracer)->esquerda != NULL) { // Removendo nó com 2 filhos
                     printf ("\nCaso de remocao: No com dois filhos");
-                    Arvore *temp = (*tracer)->esquerda;
+                    Arvore *temp = (*tracer)->esquerda; 
+                    Arvore *temp2; 
 
-                    while (temp != NULL) {
-                        if (temp->direita != NULL) {
-                            temp = temp->direita;
-                        } else {
-                            break;
-                        }
+                    while (temp->direita != NULL) {
+                        temp2 = temp;
+                        temp = temp->direita;                        
                     }
 
-                    if (direcao == 0) {
-                        pai->esquerda = temp;
-                    } else if ((direcao == 1)) {
-                        pai->direita = temp;
-                    } else {
-                        printf ("\nO ultimo nodo da arvore foi removido");
-                        *raizTemp = NULL;
-                    }
+                    strcpy((*tracer)->chave, temp->chave);
+                    strcpy((*tracer)->nome, temp->nome);
+                    strcpy((*tracer)->telefone, temp->telefone);
+                    (*tracer)->idade = temp->idade;
 
-                    temp->direita = (*tracer)->direita;
-                    temp->esquerda = (*tracer)->esquerda;     
-
-                    free((*tracer)->chave); 
-                    free((*tracer)->nome);
-                    free((*tracer)->telefone);  
-                    free((*tracer));    
-
-                    // vai para esquerda e vai até encontrar um null para direita
-                    
-
+                    strcpy(temp->chave, procura);
+                    Pop(&(*tracer)->esquerda, procura);
+                                        
                 } else { // Removendo nó com 1 filho
                    printf ("\nCaso de remocao: No com 1 filho");
                     Arvore *temp;
