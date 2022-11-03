@@ -27,15 +27,24 @@ typedef struct _InfoArvore{
 //Protótipos das Funções
 Arvore* CriaNodo(char nome[],  int idade, char telefone[], int fator);
 InfoArvore* Reset();
-void Push(Arvore **raiz, Arvore *newp);
+int Push(Arvore **tracer, Arvore *newp);
 void Clear(Arvore *arvore, InfoArvore *info);
 void PrintArvorePreOrdem(Arvore *arvore);
 void PrintArvoreCentral(Arvore *arvore);
 void PrintArvorePosOrdem(Arvore *arvore);
 void Find(Arvore **raizTemp, char procura[]);
-void Pop(Arvore **raizTemp, char procura[]);
+int Pop(Arvore **raizTemp, char procura[]);
 int Menu();
 int MenuFatorPrecendencia(InfoArvore *info);
+
+int Altura(Arvore *arvore);
+void RsimplesDireita(Arvore **arvore);
+void RsimplesEsquerda(Arvore **arvore);
+void RduplaEsquerda(Arvore **arvore);
+void RduplaDireita(Arvore **arvore);
+int Balanceamento(Arvore **arvore);
+int verficaAVL(Arvore *tracer);
+int FatorBalanceamento(Arvore *raizTemp);
 
 int main(){
     int tempInt;
@@ -94,6 +103,8 @@ int main(){
 
             printf("\n\n\t3) Pos Ordem\n\t");
             PrintArvorePosOrdem(arvore->raiz);
+
+            printf("\n\n\tBalanceamento: %d ", verficaAVL(arvore->raiz));
             break;
     
         case 5:
@@ -109,6 +120,38 @@ int main(){
             break;
         }
     }
+}
+
+
+int Menu() {
+    int opMenu;
+    printf("\n\nESCOLHA UMA DAS OPCOES\n");
+    printf("\t1) Incluir nome\n");
+    printf("\t2) Apagar nome\n");
+    printf("\t3) Buscar nome\n");
+    printf("\t4) Listar\n");
+    printf("\t5) Sair\n\t");
+    scanf("%d", &opMenu);
+    return opMenu;
+}
+
+int MenuFatorPrecendencia(InfoArvore *info) {
+    int opMenu;
+    printf("\n\nESCOLHA UM FATOR DE PRECEDENCIA\n");
+    printf("\t1) Nome\n");
+    printf("\t2) Idade\n");
+    printf("\t3) Telefone\n");
+    scanf("%d", &opMenu);
+
+    if (opMenu == 1) {
+        strcpy(info->tipoChave, "NOME");
+    } else if (opMenu == 2) {
+        strcpy(info->tipoChave, "IDADE");
+    } else {
+       strcpy(info->tipoChave, "TELEFONE");
+    }
+
+    return opMenu;
 }
 
 InfoArvore* Reset(){
@@ -137,8 +180,8 @@ Arvore* CriaNodo(char nome[],  int idade, char telefone[], int fator) {
 	}
     
     //Atribui valores iniciais para as variáveis
-	arvore->direita = NULL;
-	arvore->esquerda = NULL;
+	  arvore->direita = NULL;
+	  arvore->esquerda = NULL;
     arvore->idade = idade;
     strcpy(arvore->nome, nome);
     strcpy(arvore->telefone, telefone);
@@ -164,31 +207,36 @@ Arvore* CriaNodo(char nome[],  int idade, char telefone[], int fator) {
 
 
 //Adiciona elementos na Arvore
-void Push(Arvore **raizTemp, Arvore *newp){
-    Arvore **tracer = raizTemp;
-    if (*raizTemp == NULL) {    //Caso a arvore não tenha nenhum nodo ainda
-        *raizTemp = newp;
-    } else {
-        while (*tracer){
-            if (strcmp(newp->chave, (*tracer)->chave) > 0) {    //insere na direita
-                if ((*tracer)->direita == NULL) {
-                    (*tracer)->direita = newp;
-                    break;
-                } else {    
-                    tracer = &(*tracer)->direita;
-                }  
-            } else {    //insere na esquerda
-                if ((*tracer)->esquerda == NULL) {
-                    (*tracer)->esquerda = newp;
-                    break;
-                } else {
-                    tracer = &(*tracer)->esquerda;
-                }
+int Push(Arvore **tracer, Arvore *newp){
+    if(*tracer == NULL){  //Arvore vazia ou folha
+        *tracer = newp;
+        return 1;
+    }
+    if(strcmp(newp->chave, (*tracer)->chave) < 0){ //Se é menor insere na esquerda
+        if (Push(&(*tracer)->esquerda, newp) == 1){
+            if (Balanceamento(tracer)){
+                return 0;
+            } else{
+                return 1;
             }
+        } else{
+            return 0;
+        }
+        
+    } else if (strcmp(newp->chave, (*tracer)->chave) > 0){ //Se é maior insere na direita
+        if (Push(&(*tracer)->direita, newp) == 1){
+            if (Balanceamento(tracer)){
+                return 0;
+            } else{
+                return 1;
+            }
+        } else{
+            return 0;
         }
     }
+    return 0;
 }
- 
+
 //Mostra os elementos da Arvore
 void PrintArvorePreOrdem(Arvore *arvore){
 	if (arvore){
@@ -246,7 +294,7 @@ void Find(Arvore **raizTemp, char procura[]){
     }
 }
 
-void Pop(Arvore **raizTemp, char procura[]){
+int Pop(Arvore **raizTemp, char procura[]){
     Arvore **tracer = raizTemp;
     Arvore *pai;
     int direcao = -1;
@@ -270,7 +318,13 @@ void Pop(Arvore **raizTemp, char procura[]){
                         printf ("\nO ultimo nodo da arvore foi removido");
                         *raizTemp = NULL;
                     }
-
+                    
+                    if (Balanceamento(tracer)){
+                        return 0;
+                    } else{
+                        return 1;
+                    }
+                    
                 } else if ((*tracer)->direita != NULL && (*tracer)->esquerda != NULL) { // Removendo nó com 2 filhos
                     printf ("\nCaso de remocao: No com dois filhos");
                     Arvore *temp = (*tracer)->esquerda; 
@@ -287,8 +341,7 @@ void Pop(Arvore **raizTemp, char procura[]){
                     (*tracer)->idade = temp->idade;
 
                     strcpy(temp->chave, procura);
-                    Pop(&(*tracer)->esquerda, procura);
-                                        
+                    Pop(&(*tracer)->esquerda, procura);                                        
                 } else { // Removendo nó com 1 filho
                    printf ("\nCaso de remocao: No com 1 filho");
                     Arvore *temp;
@@ -311,9 +364,15 @@ void Pop(Arvore **raizTemp, char procura[]){
                         printf ("\nO primeiro nodo da arvore foi removido");
                         *raizTemp = temp;
                     }
+
+                    if (Balanceamento(tracer)){
+                        return 0;
+                    } else{
+                        return 1;
+                    }
                 }             
                 break;
-
+            
             } else if (strcmp(procura, (*tracer)->chave) > 0) {    //busca na direita
                 if ((*tracer)->direita != NULL) {
                     pai = *tracer;
@@ -323,7 +382,7 @@ void Pop(Arvore **raizTemp, char procura[]){
                     printf ("\nNodo nao encontrado!");
                     break;
                 }
-                  
+   
             } else {    //busca na esquerda
                 if ((*tracer)->esquerda != NULL) {
                     pai = *tracer;
@@ -332,10 +391,11 @@ void Pop(Arvore **raizTemp, char procura[]){
                 } else {
                     printf ("\nNodo nao encontrado!");
                     break;
-                }
+                }                 
             }
         }
     }
+    return 0;
 }
 
 //Exclui a Arvore
@@ -355,7 +415,7 @@ void Clear(Arvore *arvore, InfoArvore *info) {
 
 //Funções para implementar o AVL
 int FatorBalanceamento(Arvore *raizTemp){
-    if (raizTemp) {
+    if (raizTemp == NULL) {
         return 0;
     } else {
         return Altura(raizTemp->esquerda) - Altura(raizTemp->direita);
@@ -405,88 +465,54 @@ void RduplaDireita(Arvore **arvore){
     RsimplesDireita(arvore);
 }
 
-void Balanceamento(Arvore **arvore){
+int Balanceamento(Arvore **arvore){
     Arvore **tracer = arvore;
-    int fb;
-    while (*tracer) {
-        
-    }
-    
-
+    int fb = FatorBalanceamento(*arvore);
     if (fb >= 2) {
         int fbE = FatorBalanceamento((*arvore)->esquerda);
-        if (fbE >= 0){
+        if (fbE >= 1){
+            printf("\nRotacao simples a direita");
             RsimplesDireita(arvore);
-        } else {
+            return 1;
+        } else if (fb <= -1){
+            printf("\nRotacao dupla a direita");
             RduplaDireita(arvore);
+            return 1;
         }
     } else if (fb <= -2){
         int fbD = FatorBalanceamento((*arvore)->direita);
-        if (fbD < 0){
-            RsimplesEsquerda(arvore);
-        } else {
+        if (fbD >= 1){
+            printf("\nRotacao dupla a esquerda");
             RduplaEsquerda(arvore);
+            return 1;
+        } else if(fb <= -1) {
+            printf("\nRotacao simples a esquerda");
+            RsimplesEsquerda(arvore);
+            return 1;
         }
     } else{
-        printf("\nA arvore está balanceada");
+        return 0;   
     }
-    
+    return 0; 
 }
 
+//Verifica se a árvore é AVL
+int verficaAVL(Arvore *tracer){
+    int fb;
 
-int Menu() {
-    int opMenu;
-    printf("\n\nESCOLHA UMA DAS OPCOES\n");
-    printf("\t1) Incluir nome\n");
-    printf("\t2) Apagar nome\n");
-    printf("\t3) Buscar nome\n");
-    printf("\t4) Listar\n");
-    printf("\t5) Sair\n\t");
-    scanf("%d", &opMenu);
-    return opMenu;
-}
-
-int MenuFatorPrecendencia(InfoArvore *info) {
-    int opMenu;
-    printf("\n\nESCOLHA UM FATOR DE PRECEDENCIA\n");
-    printf("\t1) Nome\n");
-    printf("\t2) Idade\n");
-    printf("\t3) Telefone\n");
-    scanf("%d", &opMenu);
-
-    if (opMenu == 1) {
-        strcpy(info->tipoChave, "NOME");
-    } else if (opMenu == 2) {
-        strcpy(info->tipoChave, "IDADE");
-    } else {
-       strcpy(info->tipoChave, "TELEFONE");
+    if (tracer == NULL){
+        return 1;
     }
-
-    return opMenu;
-}
-/*
-void Push(Arvore **raizTemp, Arvore *newp){
-    Arvore **tracer = raizTemp;
-    if (*raizTemp == NULL) {
-        *raizTemp = newp;
-    } else {
-        while (*tracer){
-            if (newp->idade > (*tracer)->idade) {
-                if ((*tracer)->direita == NULL) {
-                    (*tracer)->direita = newp;
-                    break;
-                } else {
-                    tracer = &(*tracer)->direita;
-                }  
-            } else {
-                if ((*tracer)->esquerda == NULL) {
-                    (*tracer)->esquerda = newp;
-                    break;
-                } else {
-                    tracer = &(*tracer)->esquerda;
-                }
-            }
-        }
+    if (!verficaAVL(tracer->esquerda)){
+        return 0;
+    }
+    if (!verficaAVL(tracer->direita)){
+        return 0;
+    }
+    fb = FatorBalanceamento(tracer);
+    if ((fb > 1) || (fb < -1)){
+        return 0;
+    } else{
+        return 1;
     }
 }
-*/
