@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* 	TAREFA: Preencher uma arvore binária de busca e depois dizer se é AVL ou não quando parar de adicionar nodos
+/* 	NOME: Caroline Souza Camargo
+	TAREFA: Preencher uma arvore binária de busca e depois dizer se é AVL ou não quando parar de adicionar nodos
+	
 	+ -> Indica o que foi adicionado de novo no código
 */
 
