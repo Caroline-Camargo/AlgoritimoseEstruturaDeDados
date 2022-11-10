@@ -2,7 +2,15 @@
 #include <stdlib.h>
 #include<time.h>
 
+/*
+	1- Implementar os algoritmos de ordenação Insertion Sort, Selection Sort, Quick Sort e Merge Sort.
+	2- O programa deve solicitar o tamanho do vetor de números (n) que será ordenado
+	3- O programa deve preencher um vetor de tamanho n com números aleatórios. Usar srand(time(NULL)); no inicio do programa.
+	4- Faça um código que verifica se o resultado dado por cada algoritmo de ordenação está correto.
+*/
+
 void InsertionSort(int *vetor, int tamanho);
+int Verifica(int *vet, int tam);
 
 int main() {
 	int tam = 0;
@@ -23,6 +31,13 @@ int main() {
 	for (int i = 0; i < tam; i++) {
 		printf("%d  ", vet[i]);
 	}
+
+	if (Verifica(vet, tam) == 1){
+		printf("\n\n-->O vetor esta ordenado");
+	} else{
+		printf("\n\n-->O vetor nao esta ordenado");
+	}
+
 	return (0);
 }
 
@@ -37,5 +52,13 @@ void InsertionSort(int *vetor, int tamanho) {
 		}
 		vetor[j + 1] = temp;
 	}	
+}
 
+int Verifica(int *vet, int tam) {
+	for (int i = 0; i < tam - 1; i++) {
+		if (vet[i] > vet[i + 1]){
+			return 0;
+		}
+	}
+	return 1;
 }
