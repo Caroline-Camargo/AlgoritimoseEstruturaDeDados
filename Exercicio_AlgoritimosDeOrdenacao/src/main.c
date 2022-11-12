@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<time.h>
+#include <time.h>
 
 /*
 	1- Implementar os algoritmos de ordenação Insertion Sort, Selection Sort, Quick Sort e Merge Sort.
@@ -11,6 +11,7 @@
 
 void InsertionSort(int *vetor, int tamanho);
 int Verifica(int *vet, int tam);
+clock_t tempo;
 
 int main() {
 	int tam = 0;
@@ -25,6 +26,18 @@ int main() {
 		printf("%d  ", vet[i]);
 	}
 
+	clock_t temp = time(NULL);
+	FILE* fTempo = NULL;
+	if(fTempo == NULL){
+		fTempo = fopen("tempo", "r");
+	}
+
+	fscanf(fTempo, "%lf",tempo);
+	fclose(fTempo);
+
+	InsertionSort(vet, tam);
+	InsertionSort(vet, tam);
+	InsertionSort(vet, tam);
 	InsertionSort(vet, tam);
 
 	printf("\n\nVetor Ordenado\n");
@@ -37,6 +50,10 @@ int main() {
 	} else{
 		printf("\n\n-->O vetor nao esta ordenado");
 	}
+	temp = time(NULL) - temp;
+	float t = (((double)temp)/(CLOCKS_PER_SEC));
+
+	printf("\n\nTEMPO: %lf ", t);
 
 	return (0);
 }
