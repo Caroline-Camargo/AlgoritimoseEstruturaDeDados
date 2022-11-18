@@ -11,8 +11,8 @@
 
 void InsertionSort(int *vetor, int tamanho);
 void SelectionSort(int *vetor, int tamanho);
+void QuickSort(int *vetor, int iEsquerda, int iDireita);
 int Verifica(int *vet, int tam);
-clock_t tempo;
 
 int main() {
 	int tamanho = 0, op = 0;
@@ -42,7 +42,7 @@ int main() {
 		SelectionSort(vet, tamanho);
 		break;
 	case 3:
-		/* code */
+		QuickSort(vet, 0, tamanho - 1);
 		break;
 	case 4:
 		/* code */
@@ -86,14 +86,46 @@ void SelectionSort(int *vetor, int tamanho){
     for (int i = 0; i < tamanho; i++){
         min = i;
 		for (int j = i + 1; j < tamanho; j++){
-			if (vetor[j] < vetor[min])
-			min = j;
+			if (vetor[j] < vetor[min]) {
+				min = j;
+			}
 		}
 		int temp = vetor[min];
 		vetor[min] = vetor[i];
 		vetor[i] = temp;
     }
 }
+
+void QuickSort(int *vetor, int iEsquerda, int iDireita){
+	int i = iEsquerda, j = iDireita, pivo = vetor[(iEsquerda + iDireita) / 2]; 
+
+	do {
+		while (vetor[i] < pivo) {
+			i++;
+		}
+
+		while (vetor[j] > pivo) {
+			j--;
+		}
+
+		if (i <= j) {
+			int temp = vetor[i];
+			vetor[i] = vetor[j];
+			vetor[j] = temp;
+			i++;
+			j--;
+		}
+	} while (i <= j);
+
+	if (i < iDireita) {
+		QuickSort(vetor, i, iDireita);
+	}
+
+	if (j > iEsquerda) {
+		QuickSort(vetor, iEsquerda, j);
+	}
+}
+
 
 int Verifica(int *vet, int tam) {
 	for (int i = 0; i < tam - 1; i++) {
