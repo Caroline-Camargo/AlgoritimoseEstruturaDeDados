@@ -142,7 +142,7 @@ void MergeSort(int *vetor, int posicaoInicio, int posicaoFim) {
 		int vetorTemp[tamanho];
 
 		for (int i = 0; i < tamanho; i++) {
-			if (!fimVet1 && !fimVet2) {
+			if (fimVet1 == 0 && fimVet2 == 0) {
 				if(vetor[vet1] < vetor[vet2]) {
 					vetorTemp[i] = vetor[vet1];
 					vet1++;
@@ -159,7 +159,7 @@ void MergeSort(int *vetor, int posicaoInicio, int posicaoFim) {
 				} 	
 			
 			} else {
-				if (!fimVet1) {
+				if (fimVet1 == 0) {
 					vetorTemp[i] = vetor[vet1];
 					vet1++;
 				} else {
