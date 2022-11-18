@@ -10,50 +10,60 @@
 */
 
 void InsertionSort(int *vetor, int tamanho);
+void SelectionSort(int *vetor, int tamanho);
 int Verifica(int *vet, int tam);
 clock_t tempo;
 
 int main() {
-	int tam = 0;
+	int tamanho = 0, op = 0;
 	
 	printf("Por favor, digite o tamanho do vetor\n");
-	scanf("%d", &tam);
-	int vet[tam];
+	scanf("%d", &tamanho);
+	int vet[tamanho];
 
-	printf("Vetor Gerado\n");
-	for (int i = 0; i < tam; i++) {
+	printf("\nVetor Gerado\n");
+	for (int i = 0; i < tamanho; i++) {
 		vet[i] = rand() % 100;
 		printf("%d  ", vet[i]);
 	}
 
-	clock_t temp = time(NULL);
-	FILE* fTempo = NULL;
-	if(fTempo == NULL){
-		fTempo = fopen("tempo", "r");
+	printf("\n\nPor favor, digite qual metodo de ordenacao deseja usar");
+	printf("\n-- 1 Insert Sort");
+	printf("\n-- 2 Selection Sort");
+	printf("\n-- 3 Quick Sort");
+	printf("\n-- 2 Merge Sort\n");
+	scanf("%d", &op);
+
+	switch (op) {
+	case 1:
+		InsertionSort(vet, tamanho);
+		break;
+	case 2:
+		SelectionSort(vet, tamanho);
+		break;
+	case 3:
+		/* code */
+		break;
+	case 4:
+		/* code */
+		break;
+	
+	default:
+		printf("\nOpcao invalida");
+		break;
 	}
 
-	fscanf(fTempo, "%lf",tempo);
-	fclose(fTempo);
 
-	InsertionSort(vet, tam);
-	InsertionSort(vet, tam);
-	InsertionSort(vet, tam);
-	InsertionSort(vet, tam);
-
-	printf("\n\nVetor Ordenado\n");
-	for (int i = 0; i < tam; i++) {
+	printf("\n\nComo ficou:\n");
+	for (int i = 0; i < tamanho; i++) {
 		printf("%d  ", vet[i]);
 	}
 
-	if (Verifica(vet, tam) == 1){
+	if (Verifica(vet, tamanho) == 1){
 		printf("\n\n-->O vetor esta ordenado");
 	} else{
 		printf("\n\n-->O vetor nao esta ordenado");
 	}
-	temp = time(NULL) - temp;
-	float t = (((double)temp)/(CLOCKS_PER_SEC));
-
-	printf("\n\nTEMPO: %lf ", t);
 
 	return (0);
 }
@@ -69,6 +79,20 @@ void InsertionSort(int *vetor, int tamanho) {
 		}
 		vetor[j + 1] = temp;
 	}	
+}
+
+void SelectionSort(int *vetor, int tamanho){
+    int min;
+    for (int i = 0; i < tamanho; i++){
+        min = i;
+		for (int j = i + 1; j < tamanho; j++){
+			if (vetor[j] < vetor[min])
+			min = j;
+		}
+		int temp = vetor[min];
+		vetor[min] = vetor[i];
+		vetor[i] = temp;
+    }
 }
 
 int Verifica(int *vet, int tam) {
