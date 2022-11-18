@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <math.h>
 
 /*
 	1- Implementar os algoritmos de ordenação Insertion Sort, Selection Sort, Quick Sort e Merge Sort.
@@ -12,6 +12,7 @@
 void InsertionSort(int *vetor, int tamanho);
 void SelectionSort(int *vetor, int tamanho);
 void QuickSort(int *vetor, int iEsquerda, int iDireita);
+void MergeSort(int *vetor, int posicaoInicio, int posicaoFim);
 int Verifica(int *vet, int tam);
 
 int main() {
@@ -31,7 +32,7 @@ int main() {
 	printf("\n-- 1 Insert Sort");
 	printf("\n-- 2 Selection Sort");
 	printf("\n-- 3 Quick Sort");
-	printf("\n-- 2 Merge Sort\n");
+	printf("\n-- 4 Merge Sort\n");
 	scanf("%d", &op);
 
 	switch (op) {
@@ -45,7 +46,7 @@ int main() {
 		QuickSort(vet, 0, tamanho - 1);
 		break;
 	case 4:
-		/* code */
+		MergeSort(vet, 0, tamanho);
 		break;
 	
 	default:
@@ -126,6 +127,55 @@ void QuickSort(int *vetor, int iEsquerda, int iDireita){
 	}
 }
 
+void MergeSort(int *vetor, int posicaoInicio, int posicaoFim) {
+    int metadeTamanho;
+    if(posicaoInicio < posicaoFim) {
+		metadeTamanho =  floor((posicaoInicio + posicaoFim ) / 2);
+		MergeSort(vetor, posicaoInicio, metadeTamanho);
+    	MergeSort(vetor, metadeTamanho + 1, posicaoFim);
+
+		int tamanho, vet1, vet2, fimVet1 = 0, fimVet2 = 0;
+		tamanho = posicaoFim - posicaoInicio + 1;
+		vet1 = posicaoInicio;
+		vet2 = metadeTamanho + 1; 
+
+		int vetorTemp[tamanho];
+
+		for (int i = 0; i < tamanho; i++) {
+			if (!fimVet1 && !fimVet2) {
+				if(vetor[vet1] < vetor[vet2]) {
+					vetorTemp[i] = vetor[vet1];
+					vet1++;
+				} else {
+					vetorTemp[i] = vetor[vet2];
+					vet2++;
+				}
+
+				if (vet1 > metadeTamanho) {
+					fimVet1 = 1;
+				}
+				if (vet2 > posicaoFim) {
+					fimVet2 = 1;
+				} 	
+			
+			} else {
+				if (!fimVet1) {
+					vetorTemp[i] = vetor[vet1];
+					vet1++;
+				} else {
+					vetorTemp[i] = vetor[vet2];
+					vet2++;
+				}	
+			}
+		}
+
+		int k = posicaoInicio;
+		for(int i = 0; i < tamanho; i++) {
+			vetor[k] = vetorTemp[i];
+			k++;
+		}   
+	}
+}
 
 int Verifica(int *vet, int tam) {
 	for (int i = 0; i < tam - 1; i++) {
